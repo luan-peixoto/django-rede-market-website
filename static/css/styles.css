@@ -1,0 +1,417 @@
+/* 
+IMPORTANTE:
+| extra-small vai ser 1 por linha
+| small (sm) e md vao ser 2 por linha
+| lg e xl vao ser 3 por linha
+
+    https://getbootstrap.com/docs/4.0/layout/grid/
+
+| COR PRIMARIA: #b91413 vermelho
+| COR SECUNDARIA: #52b913 verde
+
+O TEXTO NÃO PRECISA SER RESPONSIVO EM TUDO
+| quando for fazer o texto, ver se tem necessidade de mudar tamanho baseado na tela e ver na
+| internet o tamanho original do elemento (h6,h5,etc) pra ter uma base
+*/
+
+@media (min-width: 0px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 576px) {
+    html {
+        font-size: calc(16px + 0.125vh);
+    }
+}
+
+@media (min-width: 992px) {
+    html {
+        font-size: calc(16px + 0.25vw);
+    }
+}
+
+/* mudar dos menus da navbar para vermelho quando passar o mouse: */
+
+.navbar-item-hover:hover {
+    color: #b91413 !important;
+}
+
+/* mudar dos menus da navbar para vermelho quando clicar(mobile): */
+
+.navbar-item-hover:active {
+    color: #b91413 !important;
+}
+
+/* fazer a navbar vir da esquerda em dispositivos xsmall (mobile) */
+
+@media (max-width: 575px) {
+    .navbar-collapse-left {
+        height: 100vh !important;
+    }
+    .navbar-collapse {
+        position: absolute;
+        top: 0px;
+        right: 50%;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+        width: 50%;
+        transition: all 0.4s ease;
+        display: block;
+    }
+    .navbar-collapse.collapsing {
+        margin-right: 75%;
+        right: 25%;
+        transition: all 0.2s ease;
+    }
+    .navbar-collapse.show {
+        right: 50%;
+    }
+}
+
+/* sombra na navbar da esquerda (mobile) */
+
+@media (max-width: 575px) {
+    .navbar-collapse-shadow {
+        box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+    /* remover sombra da navbar do topo (mobile) */
+    .sticky-shadow {
+        box-shadow: 0px 0px 0px 0px #ffff !important;
+    }
+}
+
+/* botão de pesquisa */
+
+.btn-pesquisa-abrir {
+    background-color: #e74d57;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    padding-left: 9px;
+    padding-top: 8.5px;
+    width: 32.5px;
+    height: 32.5px;
+    border-radius: 50%;
+}
+
+.btn-pesquisa-abrir:active {
+    background-color: #b91413;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-pesquisa-fechar {
+    background-color: #e74d57;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    padding-left: 11.25px;
+    padding-top: 8px;
+    width: 32.5px;
+    height: 32.5px;
+    border-radius: 50%;
+}
+
+.btn-pesquisa-fechar:active {
+    background-color: #b91413;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* icones fontawesome brancos */
+
+.fa-cor-branco {
+    color: white !important;
+}
+
+/* formulário de pesquisa customizado (com botão dentro) */
+
+.pesquisa-custom {
+    position: relative;
+}
+
+.pesquisa-custom-input {
+    width: 100%;
+    padding-right: 100px !important;
+    box-sizing: border-box;
+}
+
+.pesquisa-custom-btn {
+    position: absolute;
+    right: 9px;
+    top: 12px;
+    line-height: 1 !important;
+    z-index: 4;
+}
+
+/* alinhar texto justify */
+
+.alinhar {
+    margin: 0;
+    text-align: justify;
+}
+
+/* impedir imagem de esticar quando colocada em display-flex */
+
+.media {
+    align-self: flex-start;
+    /*preventing image from stretch*/
+    max-width: 100%;
+}
+
+/* imagem de fundo */
+
+.efeito-parallax {
+    background-image: url("../images/gatinhos.png");
+    height: 70vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* botão de play (imagem de fundo) */
+
+.btn-play {
+    background-color: #e74d57;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.877);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    padding-left: 52.5px;
+    padding-top: 42.5px;
+}
+
+.btn-play:hover {
+    transition: all 0.2s ease;
+    transform: scale(0.8, 0.8);
+    -webkit-transform: scale(0.8, 0.8);
+    -moz-transform: scale(0.8, 0.8);
+}
+
+/* rodapé */
+
+.footer {
+    background-color: #b91413;
+    color: #efefef;
+    padding: 30px 0;
+}
+
+.footer a {
+    color: #f1f1f1;
+}
+
+.footer a:hover {
+    color: #0b4275;
+}
+
+/* card reto */
+
+.card-reto {
+    border-radius: 0% !important;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.274);
+}
+
+/* width 90% */
+
+.w-90 {
+    width: 90% !important;
+}
+
+/* botões das logos do card do início */
+
+.btn-logo {
+    color: #fff;
+    background-color: #b91413;
+    box-shadow: none !important;
+}
+
+.btn-logo:hover {
+    color: #b91413;
+    background-color: #fff;
+}
+
+/* texto justificado */
+
+.text-justify {
+    text-align: justify !important;
+}
+
+/* card limpo */
+
+.card-limpo {
+    border: none;
+}
+
+/* card footer limpo */
+
+.footer-limpo {
+    background: transparent;
+    border-top: 0px;
+}
+
+/* receita card bordas */
+
+.receita-border {
+    border-color: #52b913;
+}
+
+/* receita card pagina receitas.html */
+
+.receita-page-dif {
+    border-color: #d6d6d6;
+}
+
+.receita-page-dif:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.267);
+}
+
+/* botão dos cards de receita */
+
+.btn-receita {
+    background-color: rgb(228, 228, 228);
+    color: black;
+    width: 40px;
+    height: 40px;
+    padding-top: 5px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+/* muda de cor do card inteiro ao passar mouse */
+
+.card-hover:hover #card-img {
+    filter: brightness(45%);
+    transition: all 0.4s ease;
+}
+
+.card-hover:hover #btn-card {
+    background-color: #e74d57;
+}
+
+
+.card-hover:hover #btn-inside {
+    color: rgb(255, 255, 255);
+}
+
+.card {
+    word-break: break-word !important;
+}
+
+/* botão do whatsapp */
+
+.btn-zap {
+    padding-top: 11px !important;
+    padding-right: 40px !important;
+    padding-left: 40px !important;
+    padding-bottom: 15px !important;
+    border-radius: 0;
+    color: #25d366;
+    background-color: #fff;
+    box-shadow: none !important;
+}
+
+.btn-zap:hover {
+    color: #b91413;
+}
+
+/* botão ancora para voltar ao topo */
+
+.btn-visivel {
+    color: #fff;
+    background-color: rgb(49, 49, 49); 
+    border: 1px solid rgb(49, 49, 49); 
+    position: fixed;
+    bottom: 2vh;
+    right: 2vw; 
+    
+    display: none
+}
+
+.btn-visivel:hover {
+    color: rgb(49, 49, 49); 
+    background-color: #fff;
+}
+
+/* botões de pagination */
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #e74d57;
+    border-color: #e74d57;
+  }
+
+  .page-link {
+    color: #6e6e6e;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+     }
+
+  .page-link:hover {
+    color: #e74d57;
+    background-color: #efe9e9;
+    border-color: #e74d57;
+  }
+  .page-link:focus {
+    color: #c9424b;
+    background-color: #e9ecef;
+    box-shadow: 0 0 0 0.25rem rgba(253, 13, 13, 0.25);
+  }
+
+  /* sombra interna no card */
+
+  .sombra-inner-card {
+    box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.467);
+  }
+
+  .sombra-inner-card:hover {
+    padding-top: 0px !important;
+    transition: all 0.2s ease;
+  }
+
+
+  /* aviso */
+
+  .aviso {
+      color: #49000081;
+      z-index: 5 !important;
+      position: fixed;
+      top: -5vh;
+      pointer-events:none;
+  }
+
+  /* formulário (contato) */
+
+  .form-2 {
+    padding: 1rem 1rem;
+    font-size: 0.9rem;
+    color: #383d42;
+    background-color: #f0f0f0;
+    border: none !important;
+    border-radius: 0;
+  }
+
+  .form-2:focus {
+    color: #212529;
+    background-color: #f0f0f0;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* botão de enviar mensagem (contato) */
+
+  .btn-ctt {
+    padding-top: 2px !important;
+    padding-right: 35px !important;
+    padding-left: 35px !important;
+    padding-bottom: 6px !important;
+    border-radius: 0;
+    color: #fff;
+    background-color: #e74d57;
+    box-shadow: none !important;
+}
+
+.btn-ctt:hover {
+    color: #fff;
+    background-color: #c53f48;
+}

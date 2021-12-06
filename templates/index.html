@@ -1,0 +1,586 @@
+{% extends "base_template.html" %}
+{% load static %}
+
+
+{% block title %}Inicio - Super Mercado{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block scripts %}{% endblock %}
+
+{% block body %}
+    <!-- carousel principal (desktop)-->
+    <div id="carousel-desktop" class="d-none d-sm-block carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-1-banner-1.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-1-banner-2.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-1-banner-3.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-1-banner-4.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-1-banner-5.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-1-banner-6.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-1-banner-7.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+
+    <!--carousel principal(mobile)-->
+    <div id="carousel-mobile" class="d-block d-sm-none carousel slide " data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-2-banner-1.jpg' %}" class="d-block w-90 mx-auto" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-2-banner-2.jpg' %}" class="d-block w-90 mx-auto" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-2-banner-3.jpg' %}" class="d-block w-90 mx-auto" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-2-banner-4.jpg' %}" class="d-block w-90 mx-auto" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-2-banner-5.jpg' %}" class="d-block w-90 mx-auto" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-2-banner-6.jpg' %}" class="d-block w-90 mx-auto" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'images/carousel-2-banner-7.jpg' %}" class="d-block w-90 mx-auto" alt="...">
+            </div>
+        </div>
+    </div>
+
+    <!--cartoes-->
+    <div class="pt-5 pb-4 pb-sm-5" style="background-color: #52b913;">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                    <div style="background-color: #002945;" class="card card-reto border-0 ms-2 me-2 mb-2 w-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center">
+                                <img class="media " src="{% static 'images/inicio-cards-logo-1.png' %}" alt="">
+                            </div>
+                            <h5 class="card-text text-justify" style="color: #fff">Pediu? Chegou!</h5>
+                            <p class="card-text text-justify" style="color: #fff">Faça suas compras sem sair de casa e
+                                ganhe frete grátis no primeiro pedido.</p>
+                        </div>
+                        <div class="card-footer footer-limpo text-center">
+                            <a href="/acessar-site" class="ps-3 pe-3 pt-0 pb-1 btn btn-logo">
+                                <div><i class=" m-0 d-inline fas fa-xs fa-shopping-cart"></i>
+                                    <h6 style="font-size: 0.8em" class="m-0 d-inline"> Acessar</h6>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                    <div style="background-color: #b91413;"
+                        class="card text-center card-reto border-0 ms-2 me-2 mb-2 w-100">
+                        <div class="card-body">
+                            <img class="media" src="{% static 'images/inicio-cards-logo-2.png' %}" alt="">
+                            <h5 class="card-text text-justify" style="color: #fff">Quer ter ofertas especiais?</h5>
+                            <p class="card-text text-justify" style="color: #fff">Seja Plus e garanta benefícios feitos
+                                especialmente para você.</p>
+                        </div>
+
+                        <div class="card-footer footer-limpo text-center">
+                            <a href="/cadastrar" style="background-color: #fff;"
+                                class="ps-3 pe-3 pt-0 pb-1 btn btn-logo">
+                                <div style="color:#b91413;"><i class=" m-0 d-inline fas fa-xs fa-shopping-cart"></i>
+                                    <h6 style="font-size: 0.8em" class="m-0 d-inline"> Acessar</h6>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                    <div style="background-color: #002945;"
+                        class="card text-center card-reto border-0 ms-2 me-2 mb-2 w-100">
+                        <div class="card-body">
+                            <img class="media " src="{% static 'images/inicio-cards-logo-3.png' %}" alt="">
+                            <h5 class="card-text text-justify" style="color: #fff">Ofertas na palma da sua mão.</h5>
+                            <p class="card-text text-justify" style="color: #fff">Envie OFERTAS para nosso WhatsApp e
+                                receba
+                                encartes e promoções.</p>
+                        </div>
+
+                        <div class="card-footer footer-limpo text-center">
+                            <a href="/acessar-site" class="ps-3 pe-3 pt-0 pb-1 btn btn-logo">
+                                <div><i class=" m-0 d-inline fas fa-xs fa-shopping-cart"></i>
+                                    <h6 style="font-size: 0.8em" class="m-0 d-inline"> Acessar</h6>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!--thumbnail cartaz-->
+    <div class="container pt-5">
+        <h1 style="font-size: calc(2em + 2vw);" class="text-center mb-4"><b>OFERTAS</b></h1>
+
+        <!--thumbnail-->
+        <div class="row d-flex justify-content-center mb-5">
+            <div class="col-sm-12 col-md-6">
+                <div class="img-thumbnail">
+                    <a href="#modalthumbnail" data-bs-toggle="modal" class="thumbnail">
+                        <img src="{% static 'images/encarte.png' %}" class="w-100" alt="...">
+                    </a>
+                    <div class="caption text-center p-2">
+                        <a href="/site-mercado" style="color: rgb(65, 65, 65);" class="nav-link navbar-item-hover"
+                            aria-current="page">
+                            <h5>Ofertas válidas de 30 de outubro até 04 de novembro ou enquanto durarem nossos
+                                estoques</h5>
+                        </a>
+                    </div>
+                    <div class="caption text-center p-2">
+                        <a href="https://redemarket.net/wp-content/uploads/2021/10/ENCARTE_A2_30-OUTUBRO-A-01-NOVEMBRO.pdf"
+                            style="color: rgb(65, 65, 65);" class="nav-link navbar-item-hover" aria-current="page">
+                            <p style="font-size: 0.85em;">BAIXAR ENCARTE COMPLETO</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--modal dentro da thumbnail-->
+        <div class="modal fade" id="modalthumbnail">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body m-0 p-0">
+                        <img src="{% static 'images/encarte.png' %}" width="100%" height="100%" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--logo market plus-->
+    <div class="p-5 d-flex justify-content-center" style="background-color: #b91413;">
+        <img class="m-5" src="{% static 'images/logo-plus-1.png' %}" alt="logo-plus-1">
+    </div>
+
+    <!--receitas-->
+    <div class="p-5 d-flex justify-content-center" style="background: linear-gradient(180deg, #52b913 50%, #fff 50%);">
+        <div class="container">
+
+
+            <div class="row">
+
+                <h1 style="font-size: calc(2em + 2vw);" class="text-center mb-4"><b>RECEITAS</b></h1>
+
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                    <div class="card receita-border card-hover navbar-item-hover">
+                        <a href="/pages/receitas/receita-1.html"><img id="card-img" class="card-img-top" src="{% static 'images/receita-1.jpg' %}"
+                                alt="Card image cap"></a>
+                        <div class="card-body">
+                            <div class="container p-3">
+                                <div class="row">
+                                    <div class="col-8 col-lg-10 col-xl-8 my-auto">
+                                        <a href="/pages/receitas/receita-1.html" style="color: rgb(65, 65, 65);"
+                                            class="nav-link navbar-item-hover" aria-current="page" href="/index.html">
+                                            <strong style="font-size: 1.3em">Bolo de Aipim</strong>
+                                        </a>
+                                    </div>
+                                    <div class="col-4 col-lg-2 col-xl-4 my-auto">
+                                        <a id="btn-card" type="button" href="/pages/receitas/receita-1.html" class="btn-receita">
+
+                                            <i id="btn-inside" class="fas fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                    <div class="card receita-border card-hover navbar-item-hover">
+                        <a href="/pages/receitas/receita-2.html"><img id="card-img" class="card-img-top" src="{% static 'images/receita-2.jpg' %}"
+                                alt="Card image cap"></a>
+                        <div class="card-body">
+                            <div class="container p-3">
+                                <div class="row">
+                                    <div class="col-8 col-lg-10 col-xl-8 my-auto">
+                                        <a href="/pages/receitas/receita-2.html" style="color: rgb(65, 65, 65);"
+                                            class="nav-link navbar-item-hover" aria-current="page" href="/index.html">
+                                            <strong style="font-size: 1.3em">Curau de Milho</strong>
+                                        </a>
+                                    </div>
+                                    <div class="col-4 col-lg-2 col-xl-4 my-auto">
+                                        <a id="btn-card" type="button" href="/pages/receitas/receita-2.html" class="btn-receita">
+
+                                            <i id="btn-inside" class="fas fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                    <div class="card receita-border card-hover navbar-item-hover">
+                        <a href="/pages/receitas/receita-3.html"><img id="card-img" class="card-img-top" src="{% static 'images/receita-3.jpg' %}"
+                                alt="Card image cap"></a>
+                        <div class="card-body">
+                            <div class="container p-3">
+                                <div class="row">
+                                    <div class="col-8 col-lg-10 col-xl-8 my-auto">
+                                        <a href="/pages/receitas/receita-3.html" style="color: rgb(65, 65, 65);"
+                                            class="nav-link navbar-item-hover" aria-current="page" href="/index.html">
+                                            <strong style="font-size: 1.3em">Amendoim Doce</strong>
+                                        </a>
+                                    </div>
+                                    <div class="col-4 col-lg-2 col-xl-4 my-auto">
+                                        <a id="btn-card" type="button" href="/pages/receitas/receita-3.html" class="btn-receita">
+
+                                            <i id="btn-inside" class="fas fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <!--envie ofertas-->
+    <div style="color:white; background-color: #25d366">
+        <div class="container p-5">
+            <div class="row mb-5 mt-5">
+                <div class="col-md-8 col-lg-9 my-auto">
+                    <p style="font-size: 1.8em" class="display-6">Envie Ofertas para nosso WhatsApp e receba encartes e
+                        promoções.</p>
+                </div>
+                <div class="col-md-4 col-lg-3 my-auto">
+                    <a href="/zap" class="btn btn-zap">
+                        <div>
+                            <i class=" m-0 d-inline fab fa-whatsapp"></i>
+                            <h6 class="m-0 d-inline"><b> Enviar</b></h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--notícias-->
+    <div class="p-5 d-flex justify-content-center">
+        <div class="container">
+
+
+            <div class="row">
+
+                <h1 style="font-size: calc(2em + 2vw);" class="text-center mb-4"><b>NOTÍCIAS</b></h1>
+
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                    <div style="box-shadow: none !important;" class="card card-reto card-limpo">
+                        <img class="card-img-top w-100" src="{% static 'images/noticia-1.png' %}" alt="Card image cap"></a>
+                        <div class="card-body p-0">
+                            <div class="caption d-flex">
+                                <a href="/pages/noticias/noticia-1.html" style="color: #e74d57"
+                                    class="nav-link navbar-item-hover" aria-current="page">
+                                    <b style="font-size: 0.7em;">16/09/2021</b>
+                                </a>
+
+                                <!--botão de like-->
+                                <div id="n1" class="pt-2">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="caption">
+                                <a href="/pages/noticias/noticia-1.html" style="color: rgb(65, 65, 65);"
+                                    class="nav-link navbar-item-hover" aria-current="page">
+                                    <h4><b>Participe do Clean Up Day 2021</b></h4>
+                                </a>
+                            </div>
+
+                            <div class="caption">
+                                <p style="color:rgb(133, 133, 133); font-size: 0.9em" class="nav-link">Neste sábado, 18 de setembro, acontecerá o Clean Up Day 2021 (Dia Mundial de Limpeza), um movimento cívico que reúne pessoas com intuito de promover a limpeza das praias da</p>
+                            </div>
+
+                        </div>
+                        <div class="card-footer p-0 footer-limpo">
+                            <div class="caption">
+                                <a href="/pages/noticias/noticia-1.html" style="color: rgb(65, 65, 65);" class="nav-link navbar-item-hover"
+                                    aria-current="page" href="/index.html">
+                                    <p class="display-1" style="font-size: 0.80em;">VEJA MAIS</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                    <div style="box-shadow: none !important;" class="card card-reto card-limpo">
+                        <img class="card-img-top" src="{% static 'images/noticia-2.png' %}" alt="Card image cap"></a>
+                        <div class="card-body p-0">
+                            <div class="caption d-flex">
+                                <a href="/pages/noticias/noticia-2.html" style="color: #e74d57"
+                                    class="nav-link navbar-item-hover" aria-current="page">
+                                    <b style="font-size: 0.7em;">01/06/2021</b>
+                                </a>
+
+                                <!--botão de like-->
+                                <div id="n2" class="pt-2">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="caption">
+                                <a href="/pages/noticias/noticia-2.html" style="color: rgb(65, 65, 65);"
+                                    class="nav-link navbar-item-hover" aria-current="page">
+                                    <h4><b>Mito ou Verdade: o mel não tem prazo de validade?</b></h4>
+                                </a>
+                            </div>
+
+                            <div class="caption">
+                                <p style="color:rgb(133, 133, 133); font-size: 0.9em" class="nav-link">É Mito! O mel apesar de parecer bom, ele estraga sim, ou seja, fermenta de uma forma bem mais lenta que os demais produtos perecíveis. O ideal é consumi-lo em</p>
+                            </div>
+
+                        </div>
+                        <div class="card-footer p-0 footer-limpo">
+                            <div class="caption">
+                                <a href="/pages/noticias/noticia-2.html" style="color: rgb(65, 65, 65);" class="nav-link navbar-item-hover"
+                                    aria-current="page" href="/index.html">
+                                    <p class="display-1" style="font-size: 0.80em;">VEJA MAIS</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                    <div style="box-shadow: none !important;" class="card card-reto card-limpo">
+                        <img class="card-img-top" src="{% static 'images/noticia-3.jpg' %}" alt="Card image cap"></a>
+                        <div class="card-body p-0">
+                            <div class="caption d-flex">
+                                <a href="/pages/noticias/noticia-3.html" style="color: #e74d57"
+                                    class="nav-link navbar-item-hover" aria-current="page">
+                                    <b style="font-size: 0.7em;">30/05/2021</b>
+                                </a>
+
+                                <!--botão de like-->
+                                <div id="n3" class="pt-2">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="caption">
+                                <a href="/pages/noticias/noticia-3.html" style="color: rgb(65, 65, 65);"
+                                    class="nav-link navbar-item-hover" aria-current="page">
+                                    <h4><b>Dicas de Limpeza para salas</b></h4>
+                                </a>
+                            </div>
+
+                            <div class="caption">
+                                <p style="color:rgb(133, 133, 133); font-size: 0.9em" class="nav-link">Todo mundo ama uma casa limpa e cheirosa. Mas você sabe fazer a limpeza da forma correta? O ideal é limpar um cômodo por vez. Dessa forma você economiza tempo</p>
+                            </div>
+
+                        </div>
+                        <div class="card-footer p-0 footer-limpo">
+                            <div class="caption">
+                                <a href="/pages/.html" style="color: rgb(65, 65, 65);" class="nav-link navbar-item-hover"
+                                    aria-current="page" href="/index.html">
+                                    <p class="display-1" style="font-size: 0.80em;">VEJA MAIS</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                    <div style="box-shadow: none !important;" class="card card-reto card-limpo">
+                        <img class="card-img-top" src="{% static 'images/noticia-4.jpg' %}" alt="Card image cap"></a>
+                        <div class="card-body p-0">
+                            <div class="caption d-flex">
+                                <a href="/pages/noticias/noticia-4.html" style="color: #e74d57"
+                                    class="nav-link navbar-item-hover" aria-current="page">
+                                    <b style="font-size: 0.7em;">25/05/2021</b>
+                                </a>
+
+                                <!--botão de like-->
+                                <div id="n4" class="pt-2">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="caption">
+                                <a href="/pages/noticias/noticia-4.html" style="color: rgb(65, 65, 65);"
+                                    class="nav-link navbar-item-hover" aria-current="page">
+                                    <h4><b>Cuidados com os Pets no Inverno</b></h4>
+                                </a>
+                            </div>
+
+                            <div class="caption">
+                                <p style="color:rgb(133, 133, 133); font-size: 0.9em" class="nav-link">O inverno está chegando, e não somos apenas nós que sentimos com a queda datemperatura. Os pets também sofrem com essa mudança, deixando-os até resfriados. E por isso, também precisam de</p>
+                            </div>
+
+                        </div>
+                        <div class="card-footer p-0 footer-limpo">
+                            <div class="caption">
+                                <a href="/pages/noticias/noticia-4.html" style="color: rgb(65, 65, 65);" class="nav-link navbar-item-hover"
+                                    aria-current="page" href="/index.html">
+                                    <p class="display-1" style="font-size: 0.80em;">VEJA MAIS</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                    <div style="box-shadow: none !important;" class="card card-reto card-limpo">
+                        <img class="card-img-top" src="{% static 'images/noticia-5.jpg' %}" alt="Card image cap"></a>
+                        <div class="card-body p-0">
+                            <div class="caption d-flex">
+                                <a href="/pages/noticias/noticia-5.html" style="color: #e74d57"
+                                    class="nav-link navbar-item-hover" aria-current="page">
+                                    <b style="font-size: 0.7em;">28/04/2021</b>
+                                </a>
+
+                                <!--botão de like-->
+                                <div id="n5" class="pt-2">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="caption">
+                                <a href="/pages/noticias/noticia-5.html" style="color: rgb(65, 65, 65);"
+                                    class="nav-link navbar-item-hover" aria-current="page">
+                                    <h4><b>Dicas de PRESENTES para as Mães</b></h4>
+                                </a>
+                            </div>
+
+                            <div class="caption">
+                                <p style="color:rgb(133, 133, 133); font-size: 0.9em" class="nav-link">O dia das mães é uma data muito especial e uma ótima oportunidade para presentearmos aquela que tanto nos ama. Está sem grana para investir em um presente ideal? Confira</p>
+                            </div>
+
+                        </div>
+                        <div class="card-footer p-0 footer-limpo">
+                            <div class="caption">
+                                <a href="/pages/noticias/noticia-5.html" style="color: rgb(65, 65, 65);" class="nav-link navbar-item-hover"
+                                    aria-current="page" href="/index.html">
+                                    <p class="display-1" style="font-size: 0.80em;">VEJA MAIS</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+
+                <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                    <div style="box-shadow: none !important;" class="card card-reto card-limpo">
+                        <img class="card-img-top" src="{% static 'images/noticia-6.jpg' %}" alt="Card image cap"></a>
+                        <div class="card-body p-0">
+                            <div class="caption d-flex">
+                                <a href="/pages/noticias/noticia-6.html" style="color: #e74d57"
+                                    class="nav-link navbar-item-hover" aria-current="page">
+                                    <b style="font-size: 0.7em;">22/04/2021</b>
+                                </a>
+
+                                <!--botão de like-->
+                                <div id="n6" class="pt-2">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="caption">
+                                <a href="/pages/noticias/noticia-6.html" style="color: rgb(65, 65, 65);"
+                                    class="nav-link navbar-item-hover" aria-current="page">
+                                    <h4><b>Alimentação na pandemia</b></h4>
+                                </a>
+                            </div>
+
+                            <div class="caption">
+                                <p style="color:rgb(133, 133, 133); font-size: 0.9em" class="nav-link">O cenário atual demanda cuidado com a higiene, mas também com a alimentação. Manter a nutrição em dia, através do consumo de alimentos saudáveis e água potável, é fundamental para</p>
+                            </div>
+
+                        </div>
+                        <div class="card-footer p-0 footer-limpo">
+                            <div class="caption">
+                                <a href="/pages/noticias/noticia-6" style="color: rgb(65, 65, 65);" class="nav-link navbar-item-hover"
+                                    aria-current="page" href="/index.html">
+                                    <p class="display-1" style="font-size: 0.80em;">VEJA MAIS</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+      
+
+        
+
+               
+
+               
+
+                
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div style="border-top: solid rgb(202, 202, 202)"><br><br><br><br><br><br>&nbsp;</div>
+
+        <!--toast-->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="toast-promo-relampago" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <i class=" me-2 fas fa-shopping-cart"></i>
+            <strong class="me-auto">Promoção Relâmpago</strong>
+            <small>agora</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Loja inteira com 30% de desconto. <a href="https://www.redemarketfacil.com.br/produtos/colecoes/182/nomoo">Clique aqui.</a>
+          </div>
+        </div>
+      </div>
+{% endblock %}

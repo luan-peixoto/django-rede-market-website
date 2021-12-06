@@ -1,0 +1,308 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Título Padrão{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/all.css' %}" rel="stylesheet">
+    {% block stylesheets %}{% endblock %}
+</head>
+
+<body>
+
+    <!--navbar do topo, só vai aparecer para tablets e desktops-->
+    <nav class="navbar navbar-light d-none d-sm-block navbar-expand-sm" style="background-color: #52b913; padding: 0;">
+        <div class="container">
+
+            <div class="navbar-nav mx-auto">
+                <a type="button" href="/zap" class="nav-item nav-link ms-5">
+                    <i class="fab fa-whatsapp fa-1x"></i>
+                    <h6 class="d-inline">WhatsApp !</h6>
+                </a>
+            </div>
+
+            <div class="navbar-nav">
+                <a type="button" href="/youtube" class="nav-item nav-link"
+                    style=" padding-left: 8px; padding-right: 8px">
+                    <i class="fab fa-youtube fa-2x"></i>
+                </a>
+                <a type="button" href="/face" class="nav-item nav-link" style=" padding-left: 8px; padding-right: 8px">
+                    <i class="fab fa-facebook fa-2x"></i>
+                </a>
+                <a type="button" href="/insta" class="nav-item nav-link" style=" padding-left: 8px; padding-right: 8px">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <!--navbar principal, vai aparecer em ambos dispositivos-->
+    <nav class="navbar navbar-light navbar-expand-sm sticky-top sticky-shadow" style="background-color: white;">
+        <div class="container pt-1 pb-1">
+
+            <!--logo (sm)-->
+            <a class="navbar-brand d-none d-sm-block d-md-none" href="./">
+                <img  src="{% static 'images/logo_4.png' %}" style="padding-top: 8px; padding-bottom: 8px;"
+                    alt="super_market_logo">
+            </a>
+            <!--logo (md)-->
+            <a class="navbar-brand d-none d-md-block" href="./">
+                <img class="img-fluid" width="90%" src="{% static 'images/logo_1.png' %}" style="padding-top: 8px; padding-bottom: 8px;"
+                    alt="super_market_logo">
+            </a>
+
+            <!--botão de collapse(hamburguer, mobile)-->
+            <button class="ms-2 navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="menu" aria-expanded="false" aria-label="Botão de Navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--logo (mobile)-->
+            <a class="navbar-brand d-block d-sm-none me-0" href="./">
+                <img class="img-fluid" src="{% static 'images/logo_2.png' %}" alt="super_market_logo">
+            </a>
+
+            <!--botao de pesquisa (mobile)-->
+            <div type="button" class="d-block d-sm-none me-2 ativar-popover-pesq" data-bs-html="true"
+                data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom">
+                <div onclick="replace('btn-1','btn-2')">
+                    <i id="btn-1" class="btn-pesquisa-abrir fas fa-search fa-cor-branco"></i>
+                </div>
+                <div onclick="replace('btn-2','btn-1')">
+                    <i id="btn-2" style="display: none" class="btn-pesquisa-fechar fas fa-times fa-cor-branco"></i>
+                </div>
+            </div>
+
+            <!--popover com caixa de pesquisa que fica dentro do botao de pesquisa (não funcional)-->
+            <div id="conteudo-popover" class="d-none">
+                <div class="input-group mb-1 mt-1 pesquisa-custom">
+                    <input type="text" class="form-control pesquisa-custom-input" placeholder="Pesquisa..."
+                        aria-label="formulário de pesquisa" aria-describedby="escrever pesquisa e enviar">
+                    <div class="d-block pesquisa-custom-btn" type="button" data-toggle="popover"
+                        data-bs-placement="bottom" data-html="true" data-title="Search">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!--menus que vão ser colapsados dentro do botão de collapse-->
+            <div class="navbar-collapse-shadow collapse navbar-collapse navbar-collapse-left" id="menu"
+                style="background-color: white;">
+
+                <div class="d-flex d-block d-sm-none justify-content-end me-2 mt-2">
+                    <button type="button" class="btn-close" data-bs-toggle="collapse" data-bs-target="#menu"
+                        aria-label="Close"></button>
+                </div>
+
+                <ul class="navbar-nav navbar-expand-sm ms-auto">
+                    <li class="nav-item teste">
+                        <a class="nav-link navbar-item-hover" aria-current="page" href="./">
+                            <h6 class="d-inline">Início</h6>
+                        </a>
+                    </li>
+                    <hr class="mt-1 mb-1" />
+                    <li class="nav-item">
+                        <a class="nav-link navbar-item-hover" href="/pages/quem-somos.html">
+                            <h6 class="d-inline">Quem Somos</h6>
+                        </a>
+                    </li>
+                    <hr class="mt-1 mb-1" />
+                    <li class="nav-item">
+                        <a class="nav-link navbar-item-hover" href="{% url 'receitas:index' %}">
+                            <h6 class="d-inline">Receitas</h6>
+                        </a>
+                    </li>
+                    <hr class="mt-1 mb-1" />
+                    <li class="nav-item">
+                        <a class="nav-link navbar-item-hover" href="{% url 'noticias:index' %}">
+                            <h6 class="d-inline">Notícias</h6>
+                        </a>
+                    </li>
+                    <hr class="mt-1 mb-1" />
+                    <li class="nav-item">
+                        <a class="nav-link navbar-item-hover" href="/pages/contato.html">
+                            <h6 class="d-inline">Contato</h6>
+                        </a>
+                    </li>
+                    <hr class="mt-1 mb-1" />
+
+
+                </ul>
+
+                <div class="ms-md-5 d-none d-sm-block navbar-nav navbar-expand-sm">
+                    <a class="nav-item nav-link navbar-item-hover" href="/pages/lojas.html">
+                        <i class="fas fa-map-marked-alt" style="color: #b91413; padding: 8px"></i>
+                        <h6 class="d-sm-block d-inline">Lojas</h6>
+                    </a>
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+    </nav>
+
+    {% block body %}
+        <div style="height: 1200px"></div>
+    {% endblock %}
+    
+    
+
+
+    <!--footer do site-->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+
+                <!--coluna intranet-->
+                <div class="col-sm-4 mb-4 mb-sm-none">
+                    <img src="{% static 'images/logo_3.png' %}">
+                    <p style="font-size: 0.8em;">Economia dia a dia!</p>
+                    <h5>Intranet</h5>
+
+                    <ul class="list-unstyled">
+                        <li class="nav-item mb-2">
+                            <a style="font-size: 0.85em;" class="nav-link p-0" aria-current="page"
+                                href="/minha-conta.html">
+                                <span class="d-inline">Minha Conta</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a style="font-size: 0.85em;" class="nav-link p-0" aria-current="page" href="/perfil.html">
+                                <span class="d-inline">Perfil</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a style="font-size: 0.85em;" class="nav-link p-0" aria-current="page"
+                                href="/fornecedores.html">
+                                <span class="d-inline">Fornecedores</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+
+
+
+                    </ul>
+                </div>
+
+                <!--coluna navegador-->
+                <div class="col-sm-4 mb-4 mb-sm-none">
+                    <h5>Navegar</h5>
+                    <ul class="list-unstyled">
+                        <li class="nav-item mb-2">
+                            <a style="font-size: 0.85em;" class="nav-link p-0" aria-current="page" href="./">
+                                <span class="d-inline">Início</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a style="font-size: 0.85em;" class="nav-link  p-0" aria-current="page"
+                                href="/pages/quem-somos.html">
+                                <span class="d-inline">Quem Somos</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a style="font-size: 0.85em;" class="nav-link p-0" aria-current="page"
+                                href="{% url 'receitas:index' %}">
+                                <span class="d-inline">Receitas</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a style="font-size: 0.85em;" class="nav-link p-0" aria-current="page"
+                                href="{% url 'noticias:index' %}">
+                                <span class="d-inline">Notícias</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a style="font-size: 0.85em;" class="nav-link p-0" aria-current="page" href="/pages/contato.html">
+                                <span class="d-inline">Contato</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mb-2">
+                            <a style="font-size: 0.85em;" class="nav-link p-0" aria-current="page"
+                                href="/trabalhe-conosco.html">
+                                <span class="d-inline">Trabalhe Conosco</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <!--coluna da playstore-->
+                <div class="col-sm-4 mb-4 mb-sm-none">
+                    <h5>Compre Pelo Celular</h5>
+                    <div class="d-flex">
+
+                        <!--mobile-->
+                        <div class="d-block d-sm-none p-1">
+                            <a href="https://play.google.com/site"><img width="120vw" src="{% static 'images/google-play.png' %}"></a>
+                        </div>
+                        <div class="d-block d-sm-none p-1">
+                            <a href="https://apple.store.com/site"><img width="120vw" src="{% static 'images/app-store.png' %}"></a>
+                        </div>
+
+                        <!--desktop-->
+                        <div class="d-none d-sm-block container">
+                            <div class="row">
+                                <div class="col-md-6 p-1">
+                                    <a href="https://play.google.com/site"><img width="100%" src="{% static 'images/google-play.png' %}"></a>
+                                </div>
+                                <div class="col-md-6 p-1">
+                                    <a href="https://apple.store.com/site"><img width="100%" src="{% static 'images/app-store.png' %}"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h5>Pague Com</h5>
+                    <div class="d-flex p-2">
+                        <img width="95%" src="{% static 'images/bandeiras-cartoes-pb-3.png' %}">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--copyrights-->
+    <nav class="navbar navbar-light d-none d-sm-block navbar-expand-sm" style="background-color: #52b913; padding: 0;">
+        <div class="container">
+
+            <div class="navbar-nav mx-auto p-1">
+                <h6 class="m-0">Copyright © 2022. Todos os direitos reservados. Luan Peixoto – Desenvolvimento WEB.</h6>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <!--botão fixo de voltar ao topo-->
+    <a href="#" class="btn-fixo btn-visivel">
+        <i class=" p-2 far fa-arrow-alt-circle-up"></i>
+    </a>
+
+
+    <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/noticias.js' %}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>
