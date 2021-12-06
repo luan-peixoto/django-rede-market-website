@@ -7,8 +7,9 @@ urlpatterns = [
     path('', views.index, name="index"), 
     # o atributo name de um path serve para dizer qual é o nome a ser colocado caso queira [
     # criar um href="{% url 'app_nome:nome' %}"
-    
-    path('quem-somos/', views.quem_somos, name="quem-somos"),
+    path('pages/quem-somos/', views.quem_somos, name="quem-somos"),
+    path('pages/contato/', views.contato, name="contato"),
+
     path('pages/', include('noticias.urls')), 
     # faz com que eu possa incluir urls do app noticias com o endereco 'noticias/nome_app' 
     # nessa pagina, ou em qualquer href que esteja dentro de algum arquivo html da pagina

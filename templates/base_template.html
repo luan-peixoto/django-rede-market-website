@@ -13,7 +13,6 @@
 </head>
 
 <body>
-
     <!--navbar do topo, só vai aparecer para tablets e desktops-->
     <nav class="navbar navbar-light d-none d-sm-block navbar-expand-sm" style="background-color: #52b913; padding: 0;">
         <div class="container">
@@ -46,12 +45,12 @@
         <div class="container pt-1 pb-1">
 
             <!--logo (sm)-->
-            <a class="navbar-brand d-none d-sm-block d-md-none" href="./">
+            <a class="navbar-brand d-none d-sm-block d-md-none" href="{% url 'index' %}">
                 <img  src="{% static 'images/logo_4.png' %}" style="padding-top: 8px; padding-bottom: 8px;"
                     alt="super_market_logo">
             </a>
             <!--logo (md)-->
-            <a class="navbar-brand d-none d-md-block" href="./">
+            <a class="navbar-brand d-none d-md-block" href="{% url 'index' %}">
                 <img class="img-fluid" width="90%" src="{% static 'images/logo_1.png' %}" style="padding-top: 8px; padding-bottom: 8px;"
                     alt="super_market_logo">
             </a>
@@ -63,7 +62,7 @@
             </button>
 
             <!--logo (mobile)-->
-            <a class="navbar-brand d-block d-sm-none me-0" href="./">
+            <a class="navbar-brand d-block d-sm-none me-0" href="{% url 'index' %}">
                 <img class="img-fluid" src="{% static 'images/logo_2.png' %}" alt="super_market_logo">
             </a>
 
@@ -101,13 +100,13 @@
 
                 <ul class="navbar-nav navbar-expand-sm ms-auto">
                     <li class="nav-item teste">
-                        <a class="nav-link navbar-item-hover" aria-current="page" href="./">
+                        <a class="nav-link navbar-item-hover" aria-current="page" href="{% url 'index' %}">
                             <h6 class="d-inline">Início</h6>
                         </a>
                     </li>
                     <hr class="mt-1 mb-1" />
                     <li class="nav-item">
-                        <a class="nav-link navbar-item-hover" href="/pages/quem-somos.html">
+                        <a class="nav-link navbar-item-hover" href="{% url 'quem-somos' %}">
                             <h6 class="d-inline">Quem Somos</h6>
                         </a>
                     </li>
@@ -125,7 +124,7 @@
                     </li>
                     <hr class="mt-1 mb-1" />
                     <li class="nav-item">
-                        <a class="nav-link navbar-item-hover" href="/pages/contato.html">
+                        <a class="nav-link navbar-item-hover" href="{% url 'contato' %}">
                             <h6 class="d-inline">Contato</h6>
                         </a>
                     </li>
@@ -203,14 +202,14 @@
                     <h5>Navegar</h5>
                     <ul class="list-unstyled">
                         <li class="nav-item mb-2">
-                            <a style="font-size: 0.85em;" class="nav-link p-0" aria-current="page" href="./">
+                            <a style="font-size: 0.85em;" class="nav-link p-0" aria-current="page" href="{% url 'index' %}">
                                 <span class="d-inline">Início</span>
                             </a>
                         </li>
 
                         <li class="nav-item mb-2">
                             <a style="font-size: 0.85em;" class="nav-link  p-0" aria-current="page"
-                                href="/pages/quem-somos.html">
+                                href="{% url 'quem-somos' %}">
                                 <span class="d-inline">Quem Somos</span>
                             </a>
                         </li>
@@ -230,7 +229,7 @@
                         </li>
 
                         <li class="nav-item mb-2">
-                            <a style="font-size: 0.85em;" class="nav-link p-0" aria-current="page" href="/pages/contato.html">
+                            <a style="font-size: 0.85em;" class="nav-link p-0" aria-current="page" href="{% url 'contato' %}">
                                 <span class="d-inline">Contato</span>
                             </a>
                         </li>
@@ -301,7 +300,6 @@
     <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
-    <script src="{% static 'js/noticias.js' %}"></script>
     {% block scripts %}{% endblock %}
 </body>
 

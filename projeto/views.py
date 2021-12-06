@@ -18,3 +18,7 @@ def index(request):
 def quem_somos(request):
     lista = ['a', 'b', 'c']
     return render(request, './paginas/quem-somos.html', {'lista' : lista})
+
+def contato(request):
+    lista = ['a', 'b', 'c', '4']
+    return render(request, './paginas/contato.html', {'lista' : lista})

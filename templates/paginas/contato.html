@@ -1,0 +1,116 @@
+{% extends "base_template.html" %}
+{% load static %}
+
+{% block title %}Contato - Super Mercado{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block scripts %}{% endblock %}
+
+{% block body %}
+        <!--img contato-->
+        <div>
+            <img class="w-100 mb-5" src="{% static 'images/contato-page.png' %}" alt="">
+        </div>
+    
+        <!--form e cartoes-->
+        <div class="mt-5">
+    
+            
+            <div class="container">
+    
+                <!--pergunta-->
+                <div class="row mb-5">
+                    <div class="col-sm-6">
+                        <div class="nav-item caption m-2">
+                            <p style="color: rgb(126, 126, 126);">
+                            <h3><b>Em que podemos te ajudar?</b></h3>
+                            </p>
+                        </div>
+                        <div class="nav-item caption m-2">
+                            <p style="color:rgb(168, 168, 168); font-size: 0.95em">Envie sua dúvida, reclamação ou sugestão.
+                                Sua opinião é muito importante para nós!</p>
+                        </div>
+    
+                    </div>
+    
+                    <div class="col-sm-6">
+                        <form>
+                            <div class="container p-0">
+                                <div class="row d-flex mb-3">
+                                    <div class="col-6 form-group">
+                                        <input required type="text" class="form-control form-2" id="nome" placeholder="Nome*">
+                                    </div>
+                                    <div class="col-6 form-group">
+                                        <input required type="email" class="form-control form-2" id="email" placeholder="E-mail*">
+                                    </div>
+                                </div>
+    
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control form-2" id="assunto" placeholder="Assunto">
+                                </div>
+    
+                                <div class="form-group mb-3">
+                                    <textarea required class="form-control form-2" placeholder="Mensagem" id="mensagem"
+                                        rows="4"></textarea>
+                                </div>
+    
+                                <a href="/enviar-email" class="btn btn-ctt">
+                                    <div>
+                                        <h6 style="font-size: 0.65em;" class="my-auto p-0 d-inline"><b> ENVIAR</b></h6>
+                                    </div>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+    
+                </div>
+    
+                <!--cartoes-->
+                <div class="row mb-5 mt-5">
+    
+                    <div class="col-md-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                        <div style="background-color: #52b913;" class="card card-reto border-0 me-1 mb-2 w-100">
+                            <div class="card-body">
+                                <a href="/acessar-site" class="pb-1 btn">
+                                    <p class="card-text" style="text-align: left; color: #fff">Lojas</p>
+                                    <h5 class="card-text" style="text-align: left; color: #fff">Você também pode entrar em
+                                        contato através dos canais de atendimento aqui.</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                        <div style="background-color: #b91413;" class="card card-reto border-0 mb-2 w-100">
+                            <div class="card-body">
+                                <a href="/acessar-site" id="liveToastBtn" class="pb-1 btn">
+                                    <p class="card-text" style="text-align: left; color: #fff">Trabalhe Conosco</p>
+                                    <h5 class="card-text" style="text-align: left; color: #fff">Clique aqui para enviar seu
+                                        currículo.</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                        <div style="background-color: #52b913;" class="card card-reto border-0 me-1 mb-2 w-100">
+                            <div class="card-body">
+                                <a href="/acessar-site" class="pb-1 btn">
+                                    <p class="card-text" style="text-align: left; color: #fff">Fornecedores</p>
+                                    <h5 class="card-text" style="text-align: left; color: #fff">Fale conosco, agende sua
+                                        visita e antecipe o atendimento. Clique aqui</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+    
+    
+                </div>
+    
+            </div>
+    
+    
+        </div>
+        </div>
+{% endblock %}

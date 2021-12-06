@@ -1,2 +1,167 @@
 {% extends "base_template.html" %}
 {% load static %}
+
+{% block title %}Quem Somos - Super Mercado{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block scripts %}{% endblock %}
+
+{% block body %}
+    <!--jumbotron principal-->
+    <div style="background-color: #f0f0f0;" class="p-5 rounded-lg mb-5">
+        <h1 class="text-center mb-3"><strong>Super Market</strong></h1>
+        <div class="container">
+            <div style="color: #888888" class="mb-2 alinhar">Nascemos em Angra dos Reis em 1986 com uma loja alugada de
+                60 M² e de nome Mercadão Aeroporto. Na época não tínhamos dinheiro para pagar o primeiro aluguel, e o
+                acordo foi que após 1 ano, ele seria quitado, e assim foi feito, dando então início uma linda jornada
+                que nos traz até aqui. Trabalhavam na loja nossos fundadores, Késio, Ana Lúcia e mais dois ajudantes, e
+                depois de 04 anos abrimos a nossa primeira loja própria localizada na mesma Rua Itaperuna, essa com o
+                nome Supermercado Aeroporto.</div>
+            <div style="color: #888888" class="mb-2 alinhar">Hoje somos 10 lojas distribuídas nas cidades de Angra dos
+                Reis e Paraty, totalizando mais de 11500 mil m² de área de venda e um mix atrativo com mais de 14 mil
+                itens. Buscamos trazer para os nossos clientes produtos de qualidade combinados com os melhores preços e
+                serviços. Estamos sempre preocupados com o bom trabalho executado pelo nosso time e, para tanto, nos
+                comprometemos em manter um ambiente motivado, harmônico e de constante aprendizado. Somos uma Rede de
+                supermercados que vem se profissionalizando e inovando ao longo dos anos para atender com conforto,
+                qualidade e facilidade em nossas lojas físicas e online, sem deixar de fortalecer nossos valores.</div>
+            <div style="color: #888888" class="mb-2 alinhar">Prazer, somos o Super Market.</div>
+        </div>
+    </div>
+
+    <!--cards valores-->
+    <div class="container mb-5 mb-sm-3">
+
+        <div class="row">
+
+            <div class="col-md-6 d-flex align-items-stretch">
+                <div class="card border-0 ms-2 me-2 mb-3 w-100">
+                    <div style="background-color: #b91413" class="card-header">
+                        <h5 class="card-title m-0" style="color: rgb(250, 250, 250)"><strong>Missão</strong></h5>
+                    </div>
+                    <div class="card-body d-flex">
+                        <img class="media pe-2" src="{% static 'images/icone-missao.png' %}" alt="">
+                        <p style="color: #888888" class="card-text alinhar">Garantir a melhor experiência e qualidade de
+                            compra, para todos os nossos clientes, em cada uma de nossas lojas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 d-flex align-items-stretch">
+                <div class="card border-0 ms-2 me-2 mb-3 w-100">
+                    <div style="background-color: #b91413" class="card-header">
+                        <h5 class="card-title m-0" style="color: rgb(250, 250, 250)"><strong>Valores</strong></h5>
+                    </div>
+                    <div class="card-body d-flex">
+                        <img class="media pe-2" src="{% static 'images/icone-valores.png' %}" alt="">
+                        <p style="color: #888888" class="card-text">
+                            - Pensamos e agimos como donos.<br>
+                            - Gente é tudo para a gente.<br>
+                            - Ética é inegociável.<br>
+                            - O cliente é o nosso patrão.<br>
+                            - Trabalhamos por amor em busca de resultados.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 d-flex align-items-stretch">
+                <div class="card border-0 ms-2 me-2 mb-3 w-100">
+                    <div style="background-color: #52b913" class="card-header">
+                        <h5 class="card-title m-0" style="color: rgb(250, 250, 250)"><strong>Visão</strong></h5>
+                    </div>
+                    <div class="card-body d-flex">
+                        <img class="media pe-2" src="{% static 'images/icone-visao.png' %}" alt="">
+                        <p style="color: #888888" class="card-text alinhar">O Super Market almeja ampliar a participação
+                            no mercado brasileiro de varejo e tornar-se a empresa mais influente do setor varejista da
+                            Costa Verde e do Sul Fluminense.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 d-flex align-items-stretch">
+                <div class="card border-0 ms-2 me-2 mb-3 w-100">
+                    <div style="background-color: #52b913" class="card-header">
+                        <h5 class="card-title m-0" style="color: rgb(250, 250, 250)"><strong>Propósito</strong></h5>
+                    </div>
+                    <div class="card-body d-flex">
+                        <img class="media pe-2" src="{% static 'images/icone-proposito.png' %}" alt="">
+                        <p style="color: #888888" class="card-text alinhar">Alimentar todos os momentos do seu dia, com
+                            alegria e amor.</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!--imagem de fundo com video (botão video não funcional)-->
+    <div class="efeito-parallax ">
+        <div class="container p-5 d-flex justify-content-center">
+            <a type="button" href="/youtube video" class="btn-play">
+                <div>
+                    <i class="fas fa-play fa-cor-branco"></i>
+                </div>
+            </a>
+        </div>
+
+        <div class="container d-flex justify-content-center">
+            <h5 class="text-center" style="color: rgb(29, 29, 29)"><strong>São mais de 3 décadas investindo em inovação,
+                    qualidade e variedade</strong></h5>
+        </div>
+    </div>
+
+    <!--div com os cards e numeros (não incrementam)-->
+    <div class="pt-5 pb-5 pb-sm-4 pb-lg-5" style="background-color: #52b913;">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="card text-center card-reto border-0 ms-2 me-2 mb-4 mb-sm-none w-100">
+                        <div class="card-body">
+                            <img class="media" src="{% static 'images/icone-lojas.png' %}" alt="">
+                            <h1 style="font-size: 3em; color:rgb(62, 58, 80)">10</h1>
+                            <p style="color: #888888">Lojas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="card text-center card-reto border-0 ms-2 me-2 mb-4 mb-sm-none w-100">
+                        <div class="card-body">
+                            <img class="media" src="{% static 'images/icone-colaboradores.png' %}" alt="">
+                            <h1 style="font-size: 3em; color:rgb(62, 58, 80)">1240</h1>
+                            <p style="color: #888888">Colaboradores</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="card text-center card-reto border-0 ms-2 me-2 mb-4 mb-sm-none w-100">
+                        <div class="card-body">
+                            <img class="media" src="{% static 'images/icone-area-de-venda.png' %}" alt="">
+                            <h1 style="font-size: 3em; color:rgb(62, 58, 80)">11500</h1>
+                            <p style="color: #888888">M² de área de venda</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch">
+                    <div class="card text-center card-reto border-0 ms-2 me-2 mb-4 mb-sm-none w-100">
+                        <div class="card-body">
+                            <img class="media" src="{% static 'images/incone-checkouts.png' %}" alt="">
+                            <h1 style="font-size: 3em; color:rgb(62, 58, 80)">145</h1>
+                            <p style="color: #888888">Check-out</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div><br><br><br><br><br><br>&nbsp;</div>
+{% endblock %}
