@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'noticias',
     'receitas',
     'lojas',
+    'categoria',
 ]
 
 MIDDLEWARE = [
