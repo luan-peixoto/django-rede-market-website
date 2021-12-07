@@ -5,7 +5,7 @@
 
 {% block stylesheets %}{% endblock %}
 
-{% block scripts %}<script src="{% static 'js/noticias.js' %}"></script>{% endblock %}
+{% block scripts %}<script src="{% static 'js/button-like.js' %}"></script>{% endblock %}
 
 {% block body %}
     <!--img noticias-->
@@ -31,7 +31,7 @@
 
                                 <!--botão de like-->
                                 <div id="n{{ noticia.id }}" class="pt-2">
-                                    
+                                    <span id="like-n{{ noticia.id }}" class="badge bg-primary" data-like="{{ noticia.likes }}">{{ noticia.likes }}</span><a class="ps-1 pe-1" id="like-btn-n{{ noticia.id }}" data-clicked="false" type="button" onclick="like_click('n{{ noticia.id }}')" style="color: #0d6efd"><i id="like-icon-n{{ noticia.id }}" class="far fa-thumbs-up"></i></a><span id="dislike-n{{ noticia.id }}" class="badge bg-primary"  data-dislike="{{ noticia.deslikes }}">{{ noticia.deslikes }}</span><a class="ps-1 pe-1" id="dislike-btn-n{{ noticia.id }}" data-clicked="false" type="button" onclick="dislike_click('n{{ noticia.id }}')" style="color: #0d6efd"><i id="dislike-icon-n{{ noticia.id }}" class="far fa-thumbs-down"></i></a>
                                 </div>
                             </div>
 
