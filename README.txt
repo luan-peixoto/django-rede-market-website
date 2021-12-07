@@ -12,3 +12,4 @@ FAZER SEMPRE QUE CRIAR UM NOVO PROJETO
     adicionar a variavel STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
         em settings.py, para fazer com que a pasta de imagens e arquivos seja lida 
         
+    cmd -> py manage.py createsuperuser, para criar um usuario admin
