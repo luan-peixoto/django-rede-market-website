@@ -415,3 +415,10 @@ O TEXTO NÃO PRECISA SER RESPONSIVO EM TUDO
     color: #fff;
     background-color: #c53f48;
 }
+
+/* table escura */
+
+.table-market {
+    background-color:hsl(107, 100%, 95%);
+    border-color:#6eac7d
+}

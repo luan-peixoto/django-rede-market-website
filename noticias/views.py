@@ -42,8 +42,13 @@ def noticias(request):
 
     
 def cadastrar_noticia(request):
+    lista_noticias = Noticia.objects.all().order_by('id')
+    obj_per_page = 4
+    paginator = Paginator(lista_noticias, obj_per_page)
+    pagina_atual = request.GET.get('pagina')
+    page_obj_noticias = paginator.get_page(pagina_atual)
 
-
-    page = []
-
-    return render(request, './paginas/cadastrar_noticia.html', {'noticias' : page})
+    n = range(int(lista_noticias.count() % obj_per_page))
+    # quantidade de tabelas que não foram carregadas
+    
+    return render(request, './paginas/cadastrar_noticia.html', {'noticias' : page_obj_noticias, 'n' : n})
