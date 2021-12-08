@@ -10,94 +10,133 @@
 
 {% block body %}
 <div class="container">
+    <div class="mb-2">
+        <h5>Pesquisa de Notícias</h5>
+        <hr class="mt-0 mb-3">
+
+        <form action="" method='GET' class="mb-4">
+            <div class='form-group row' style='margin-bottom: 10px;'>
+                <label for='id_titulo' class='col-lg-2 col-form-label font-weight-bold'>
+                    Título
+                </label>
+                <div class='col-lg-10'>
+                    {{ form_pesquisa.titulo }}
+                    <!-- é o mesmo que:
+                  <input type='text' name='titulo' id='id_titulo' class='form-control 
+                  form-control-sm' maxlength='100'> -->
+                </div>
+            </div>
+            <div class='form-group row'>
+                <div class="col-lg-10 offset-lg-2">
+                    <button type='submit' class='btn btn-primary'>
+                        <div class="d-flex align-items-center">
+                            Pesquisar
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </form>
 
 
-    <h5 class="mb-3">Lista de Notícias</h5>
+    </div>
 
-    <!--tabela noticias-->
-    <table style="font-size: 0.9em;" class="table table-bordered table-market">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Título</th>
-                <th scope="col">Data</th>
-                <th scope="col">Descrição Breve</th>
-                <th scope="col">Likes</th>
-                <th scope="col">Dislikes</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for noticia in noticias %}
-            <tr>
-                <td>{{ noticia.id }}</td>
-                <td>{{ noticia.titulo }}</td>
-                <td>{{ noticia.data }}</td>
-                <td>{{ noticia.desc_mini|slice:":100" }} ...</td>
-                <td>{{ noticia.likes }}</td>
-                <td>{{ noticia.deslikes }}</td>
-            </tr>
-            {% endfor %}
 
-            {% if not noticias.has_next %}
-            {% for i in n %}
-            <tr>
-                <td>-</td>
-                <td>titulo placeholder</td>
-                <td>00/00/0000</td>
-                <td>placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder ...</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-            {% endfor %}
-            {% endif %}
+    <div class="mb-2">
+        <!--se o resultado da pesquisa não resultar num set vazio de noticias: -->
+        {% if noticias %}
+            <h5>Lista de Notícias</h5>
+            <hr class="mt-0 mb-3">
 
-        </tbody>
-    </table>
+            <!--tabela noticias-->
+            <table style="font-size: 0.9em;" class="table table-bordered table-market">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Descrição Breve</th>
+                        <th scope="col">Likes</th>
+                        <th scope="col">Dislikes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for noticia in noticias %}
+                    <tr>
+                        <td>{{ noticia.id }}</td>
+                        <td>{{ noticia.titulo }}</td>
+                        <td>{{ noticia.data }}</td>
+                        <td>{{ noticia.desc_mini|slice:":100" }} ...</td>
+                        <td>{{ noticia.likes }}</td>
+                        <td>{{ noticia.deslikes }}</td>
+                    </tr>
+                    {% endfor %}
 
-    <!--pagination-->
-    <div class="row">
-        {% if noticias.has_other_pages %}
-        <nav aria-label="page navigation">
-            <ul class="pagination justify-content-center">
-
-                {% if noticias.has_previous %}
-                    <li class="page-item">
-                        <a class="page-link" href="?pagina={{ noticias.previous_page_number }}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
+                    {% if not noticias.has_next %}
+                    {% for i in n %}
+                    <tr>
+                        <td>-</td>
+                        <td>titulo placeholder</td>
+                        <td>00/00/0000</td>
+                        <td>placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder
+                            placeholder placeholder ...</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    {% endfor %}
                     {% endif %}
 
-                    {% for i in noticias.paginator.page_range %}
-                        {% if noticias.number == i %}
-                            <li class="page-item active disabled" aria-current="page"><a class="page-link" href="#">{{ i }}</a></li>
+                </tbody>
+            </table>
+
+            <!--pagination-->
+            <div class="row">
+                {% if noticias.has_other_pages %}
+                <nav aria-label="page navigation">
+                    <ul class="pagination justify-content-center">
+
+                        {% if noticias.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?pagina={{ noticias.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
                         {% else %}
-                            <li class="page-item"><a class="page-link" href="?pagina={{ i }}">{{ i }}</a></li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
                         {% endif %}
-                    {% endfor %}
-                    
-                    {% if noticias.has_next %}
-                    <li class="page-item">
-                        <a class="page-link" href="?pagina={{ noticias.next_page_number }}" aria-label="Previous">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
+
+                        {% for i in noticias.paginator.page_range %}
+                        {% if noticias.number == i %}
+                        <li class="page-item active disabled" aria-current="page"><a class="page-link" href="#">{{ i }}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link" href="?pagina={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+
+                        {% if noticias.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?pagina={{ noticias.next_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
                 {% endif %}
-            </ul>
-        </nav>
+            </div>
         {% endif %}
     </div>
+
+
 </div>
 {% endblock %}

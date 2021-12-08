@@ -10,4 +10,6 @@ urlpatterns = [
     # o atributo name de um path serve para dizer qual é o nome a ser colocado caso queira [
     # criar um href="{% url 'app_nome:nome' %}"
     path('cadastrar_noticia/', views.cadastrar_noticia, name="cadastrar-noticia"), 
+
+    path('backup_cadastrar_noticia/', views.backup_cadastrar_noticia, name="backup-cadastrar-noticia"), 
 ]

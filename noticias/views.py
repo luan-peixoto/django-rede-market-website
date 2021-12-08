@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 
 from noticias.models import Noticia
+from noticias.forms import PesquisaNoticiaForm
 
 def noticias(request):
     lista_noticias = Noticia.objects.all().order_by('id')
@@ -42,6 +43,36 @@ def noticias(request):
 
     
 def cadastrar_noticia(request):
+    form_pesquisa = PesquisaNoticiaForm(request.GET)
+    # pega no browser a pesquisa enviada, caso a pagina seja acessada diretamente, pega ""
+
+    if form_pesquisa.is_valid():
+        # caso nenhuma regra de input do form esteja sendo violada
+        titulo = form_pesquisa.cleaned_data['titulo']
+
+        lista_noticias = Noticia.objects.all().filter(titulo__icontains=titulo).order_by('id')
+        # '.filter(titulo__icontains=titulo)' filtra apenas os objetos que contenham o texto
+        # do form no atributo titulo
+
+        obj_per_page = 4
+        paginator = Paginator(lista_noticias, obj_per_page)
+        pagina_atual = request.GET.get('pagina')
+        page_obj_noticias = paginator.get_page(pagina_atual)
+
+        n = 0
+        if lista_noticias.count() < obj_per_page:
+            n = range(obj_per_page - lista_noticias.count())
+        else:
+            n = range(int(lista_noticias.count() % obj_per_page))
+        # quantidade de tabelas que não foram carregadas
+
+        return render(request, './paginas/cadastrar_noticia.html', {'noticias' : page_obj_noticias, 
+        'n' : n, 'form_pesquisa' : form_pesquisa})
+    else:
+        raise ValueError("ERRO DE VALIDAÇÃO - FORMULÁRIO INVÁLIDO")
+
+
+def backup_cadastrar_noticia(request):
     lista_noticias = Noticia.objects.all().order_by('id')
     obj_per_page = 4
     paginator = Paginator(lista_noticias, obj_per_page)
@@ -51,4 +82,4 @@ def cadastrar_noticia(request):
     n = range(int(lista_noticias.count() % obj_per_page))
     # quantidade de tabelas que não foram carregadas
     
-    return render(request, './paginas/cadastrar_noticia.html', {'noticias' : page_obj_noticias, 'n' : n})
+    return render(request, './paginas/backup_cadastrar_noticia.html', {'noticias' : page_obj_noticias, 'n' : n})
