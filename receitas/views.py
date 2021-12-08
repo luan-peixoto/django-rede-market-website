@@ -1,9 +1,10 @@
 from django.shortcuts import render
-
+from receitas.models import Receita
 
 def receitas(request):
-    lista = [1, 2, 3, 6, 7, 12]
-    return render(request, './paginas/receitas.html', {'lista' : lista})
+    
+    lista_receitas = Receita.objects.filter(categoria_id=1).order_by('id')
+    return render(request, './paginas/receitas.html', {'receitas' : lista_receitas})
     # "./receitas.html" é o caminho do arquivo html a ser renderizado
     # por padrão o django procura os arquivos html em todas as pasta template que precisa
     # ser criada na raiz de cada app, porém caso seja adicionado 

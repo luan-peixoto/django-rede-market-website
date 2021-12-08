@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from receitas.models import Receita
+from noticias.models import Noticia
 
 def index(request):
-    lista = ['a', 'b', 'c']
-    return render(request, './index.html', {'lista' : lista})
+    lista_noticias = Noticia.objects.all().order_by('id')[:6]
+    lista_receitas = Receita.objects.filter(categoria_id=1).order_by('id')[:3]
+    return render(request, './index.html', {'noticias' : lista_noticias[:6], 'receitas' : lista_receitas[:3]})
     # "./index.html" é o caminho do arquivo html a ser renderizado
     # por padrão o django procura os arquivos html em todas as pasta template que precisa
     # ser criada na raiz de cada app, porém caso seja adicionado 

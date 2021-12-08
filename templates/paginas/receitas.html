@@ -1,11 +1,86 @@
 {% extends "base_template.html" %}
 {% load static %}
 
-{% block title %}Lojas - Super Mercado{% endblock %}
+{% block title %}Receitas - Super Mercado{% endblock %}
 
 {% block stylesheets %}{% endblock %}
 
-{% block scripts %}{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/button-like.js' %}"></script>
+{% endblock %}
 
 {% block body %}
+    <!--img receitas-->
+    <div>
+        <img class="w-100" src="{% static 'images/receitas-page.png' %}" alt="">
+    </div>
+
+
+    <!--receitas-->
+    <div class="p-5 d-flex justify-content-center">
+        <div class="container">
+
+            <div class="row mb-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb d-flex justify-content-center">
+                        <li class="breadcrumb-item" aria-current="page"><a class="navbar-item-hover"
+                                style="color:rgb(65, 65, 65);" href="#">Todos</a></li>
+                        <li class="breadcrumb-item"><a class="navbar-item-hover" style="color:rgb(65, 65, 65);"
+                                href="#">Família</a></li>
+                        <li class="breadcrumb-item"><a class="navbar-item-hover" style="color:rgb(65, 65, 65);"
+                                href="#">Gourmet</a></li>
+                        <li class="breadcrumb-item"><a class="navbar-item-hover" style="color:rgb(65, 65, 65);"
+                                href="#">Prático</a></li>
+                    </ol>
+                </nav>
+            </div>
+
+            <!-- receitas -->
+            <div class="row">
+                {% for receita in receitas %}
+                    {% if receita.categoria_id == 1 %}
+                        <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-sm-none">
+                            <div class="card receita-page-dif card-hover navbar-item-hover">
+                                <a href="/pages/receitas/receita-1.html"><img id="card-img" class="card-img-top" src="{% static 'images/' %}{{ receita.imagem }}"
+                                        alt="Card image cap"></a>
+                                <div class="card-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="/pages/receitas/receita-1.html" style="color: rgb(65, 65, 65);"
+                                                    class="nav-link navbar-item-hover p-0 pt-2 pb-2" aria-current="page" href="/index.html">
+                                                    <strong style="font-size: 1.3em">{{ receita.titulo }}</strong>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-8 col-lg-10 col-xl-8 my-auto">
+                                                <div id="r{{ receita.id }}">
+                                                    <span id="like-r{{ receita.id }}" class="badge bg-primary" data-like="{{ receita.likes }}">{{ receita.likes }}</span><a class="ps-1 pe-1" id="like-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="like_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="like-icon-r{{ receita.id }}" class="far fa-thumbs-up"></i></a><span id="dislike-r{{ receita.id }}" class="badge bg-primary"  data-dislike="{{ receita.deslikes }}">{{ receita.deslikes }}</span><a class="ps-1 pe-1" id="dislike-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="dislike_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="dislike-icon-r{{ receita.id }}" class="far fa-thumbs-down"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 col-lg-2 col-xl-4 my-auto">
+                                                <a id="btn-card" type="button" href="/pages/receitas/receita-1.html" class="btn-receita">
+
+                                                    <i id="btn-inside" class="fas fa-angle-right"></i>
+                                                </a>
+                                            </div>
+                                            <!--botão de like-->
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+
+
+        </div>
+
+
+    </div>
 {% endblock %}
