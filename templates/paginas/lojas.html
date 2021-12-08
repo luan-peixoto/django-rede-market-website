@@ -8,4 +8,158 @@
 {% block scripts %}{% endblock %}
 
 {% block body %}
+    <!--img lojas-->
+    <div class="mb-4">
+        <img class="w-100" src="{% static 'images/lojas-page.jpg' %}" alt="">
+    </div>
+
+    <!--lojas tabela-->
+    <div class="justify-content-center">
+        <div class="mb-4">
+            <h1 style="font-size: calc(2em + 2vw);" class="text-center mb-4"><b>NOSSAS LOJAS</b></h1>
+        </div>
+
+
+        <!--navegador por tabelas-->
+        <ul class="nav nav-tabs justify-content-center m-4" id="tabela-cidades" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button style="color:rgb(49, 49, 49)" class="nav-link navbar-item-hover active" id="angra" data-bs-toggle="tab" data-bs-target="#angra-painel"
+                    type="button" role="tab" aria-controls="home" aria-selected="true">Angra dos Reis</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button style="color:rgb(49, 49, 49)" class="nav-link navbar-item-hover" id="paraty" data-bs-toggle="tab" data-bs-target="#paraty-painel" type="button"
+                    role="tab" aria-controls="profile" aria-selected="false">Paraty</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button style="color:rgb(49, 49, 49)" class="nav-link navbar-item-hover" id="volta-redonda" data-bs-toggle="tab" data-bs-target="#volta-redonda-painel"
+                    type="button" role="tab" aria-controls="contact" aria-selected="false">Volta Redonda</button>
+            </li>
+        </ul>
+
+        <!--conteudo das tabelas-->
+        <div class="tab-content" id="myTabContent">
+
+            <!--tabela angra-->
+            <div class="tab-pane fade show active" id="angra-painel" role="tabpanel" aria-labelledby="angra">
+                <div class="container">
+
+                    <div class="row">
+
+                        {% for loja in lojas %}
+
+                        {% if loja.cidade == 'Angra dos Reis' %}
+
+                        <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                            <div style="box-shadow: none !important;" class="card card-reto">
+                                <div class="card-body p-2 sombra-inner-card">
+                                    <h5 style="color:rgb(71, 71, 71);"><b>{{ loja.nome }}</b></h5>
+                                    <img class="w-100" src="{% static 'images/' %}{{ loja.imagem }}" alt="{{ loja.nome }}"></a>
+                                    <div class="caption">
+                                        <p style="color:rgb(133, 133, 133); font-size: 0.9em" class="nav-link">
+                                            {{ loja.endereco }}<br>{{ loja.bairro }} - {{ loja.cidade }}
+                                            <br><br>
+                                            Segunda a sábado: {{ loja.horario_sem }}
+                                            Domingo: {{ loja.horario_fds }}
+                                            <br><br>
+                                            {{ loja.telefone }}
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {% endif %}
+                        {% endfor %}
+                        
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--tabela paraty-->
+            <div class="tab-pane fade" id="paraty-painel" role="tabpanel" aria-labelledby="paraty">
+
+                <div class="container">
+
+                    <div class="row">
+                        {% for loja in lojas %}
+
+                        {% if loja.cidade == 'Paraty' %}
+
+                        <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                            <div style="box-shadow: none !important;" class="card card-reto">
+                                <div class="card-body p-2 sombra-inner-card">
+                                    <h5 style="color:rgb(71, 71, 71);"><b>{{ loja.nome }}</b></h5>
+                                    <img class="w-100" src="{% static 'images/' %}{{ loja.imagem }}" alt="{{ loja.nome }}"></a>
+                                    <div class="caption">
+                                        <p style="color:rgb(133, 133, 133); font-size: 0.9em" class="nav-link">
+                                            {{ loja.endereco }}<br>{{ loja.bairro }} - {{ loja.cidade }}
+                                            <br><br>
+                                            Segunda a sábado: {{ loja.horario_sem }}
+                                            Domingo: {{ loja.horario_fds }}
+                                            <br><br>
+                                            {{ loja.telefone }}
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <!--tabela volta redonda-->
+            <div class="tab-pane fade" id="volta-redonda-painel" role="tabpanel" aria-labelledby="volta-redonda">
+
+
+                <div class="container">
+
+                    <div class="row">
+                        {% for loja in lojas %}
+
+                        {% if loja.cidade == 'Volta Redonda' %}
+
+                        <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-3 mb-sm-none">
+                            <div style="box-shadow: none !important;" class="card card-reto">
+                                <div class="card-body p-2 sombra-inner-card">
+                                    <h5 style="color:rgb(71, 71, 71);"><b>{{ loja.nome }}</b></h5>
+                                    <img class="w-100" src="{% static 'images/' %}{{ loja.imagem }}" alt="{{ loja.nome }}"></a>
+                                    <div class="caption">
+                                        <p style="color:rgb(133, 133, 133); font-size: 0.9em" class="nav-link">
+                                            {{ loja.endereco }}<br>{{ loja.bairro }} - {{ loja.cidade }}
+                                            <br><br>
+                                            Segunda a sábado: {{ loja.horario_sem }}
+                                            Domingo: {{ loja.horario_fds }}
+                                            <br><br>
+                                            {{ loja.telefone }}
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
 {% endblock %}
