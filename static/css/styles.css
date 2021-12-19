@@ -9,28 +9,8 @@ IMPORTANTE:
 | COR PRIMARIA: #b91413 vermelho
 | COR SECUNDARIA: #52b913 verde
 
-O TEXTO NÃO PRECISA SER RESPONSIVO EM TUDO
-| quando for fazer o texto, ver se tem necessidade de mudar tamanho baseado na tela e ver na
-| internet o tamanho original do elemento (h6,h5,etc) pra ter uma base
 */
 
-@media (min-width: 0px) {
-    html {
-        font-size: 16px;
-    }
-}
-
-@media (min-width: 576px) {
-    html {
-        font-size: calc(16px + 0.125vh);
-    }
-}
-
-@media (min-width: 992px) {
-    html {
-        font-size: calc(16px + 0.25vw);
-    }
-}
 
 /* mudar dos menus da navbar para vermelho quando passar o mouse: */
 

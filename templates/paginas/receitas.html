@@ -56,6 +56,7 @@
                                         <div class="row">
 
                                             <div class="col-8 col-lg-10 col-xl-8 my-auto">
+                                                <!--botão de like-->
                                                 <div id="r{{ receita.id }}">
                                                     <span id="like-r{{ receita.id }}" class="badge bg-primary" data-like="{{ receita.likes }}">{{ receita.likes }}</span><a class="ps-1 pe-1" id="like-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="like_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="like-icon-r{{ receita.id }}" class="far fa-thumbs-up"></i></a><span id="dislike-r{{ receita.id }}" class="badge bg-primary"  data-dislike="{{ receita.deslikes }}">{{ receita.deslikes }}</span><a class="ps-1 pe-1" id="dislike-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="dislike_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="dislike-icon-r{{ receita.id }}" class="far fa-thumbs-down"></i></a>
                                                 </div>
@@ -66,7 +67,7 @@
                                                     <i id="btn-inside" class="fas fa-angle-right"></i>
                                                 </a>
                                             </div>
-                                            <!--botão de like-->
+                                            
                                             
                                         </div>
                                     </div>

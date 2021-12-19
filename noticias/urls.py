@@ -9,7 +9,7 @@ urlpatterns = [
     path('noticias/', views.noticias, name="index"), 
     # o atributo name de um path serve para dizer qual é o nome a ser colocado caso queira [
     # criar um href="{% url 'app_nome:nome' %}"
-    path('cadastrar_noticia/', views.cadastrar_noticia, name="cadastrar-noticia"), 
+    path('listar_noticias/', views.listar_noticias, name="listar-noticias"), 
 
-    path('backup_cadastrar_noticia/', views.backup_cadastrar_noticia, name="backup-cadastrar-noticia"), 
+    path('backup_listar_noticias/', views.backup_listar_noticias, name="backup-listar-noticias"), 
 ]
