@@ -13,3 +13,7 @@ FAZER SEMPRE QUE CRIAR UM NOVO PROJETO
         em settings.py, para fazer com que a pasta de imagens e arquivos seja lida 
         
     cmd -> py manage.py createsuperuser, para criar um usuario admin
+
+    adicionar DATE_INPUT_FORMATS = ['%d/%m/%Y'] em settings.py caso queria que definir
+    um formato para qualquer formulário que contenha um campo DateField()
+    e adicionar input_formats = settings.DATE_INPUT_FORMATS dentro do DateField()

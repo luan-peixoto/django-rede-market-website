@@ -1,0 +1,183 @@
+{% extends "base_template.html" %}
+{% load static %}
+
+    <!-- caso o objeto noticia_id esteja na sessão, quer dizer que é uma alteração -->
+{% block title %}
+    {% if 'noticia_id' in request.session %}
+        Alterar Notícia - {{ noticia }}
+    {% else %}
+        Cadastrar Notícia
+    {% endif %}
+{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        $('#id_data').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-3:+0",
+            dateFormat: 'dd/mm/yy',
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            nextText: 'Próximo',
+            prevText: 'Anterior',
+            showOn: 'focus',
+        })
+
+        $('#id_data').mask('00/00/0000')
+    });
+    
+</script>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <div class="mb-2">
+        <h5>Formulário de Notícias</h5>
+        <hr class="mt-0 mb-3">
+
+        <!-- após enviar o formulário, envia uma requisição pra view criar_editar_noticia -->
+        <!-- é necessário fazer isso pois a view editar_noticia também usa esse template -->
+        <!-- e se o action fosse deixado em branco, após editar uma noticia a requisição -->
+        <!-- seria enviada para a view editar_noticia, ou seja, a view errada -->
+        <form action="{% url 'noticias:criar-editar-noticia' %}" method="POST" class="pb-4" novalidate>
+
+
+            <div class="row">
+
+                <div class="col-lg-6">
+
+                    <div class="row">
+
+                        <div class="col-12 form-group pb-3">
+                            <!--titulo-->
+                            {{ form.titulo }}
+
+                            <!-- caso algum valor inválido seja digitado no formulário-->
+                            {% if form.titulo.errors %}
+                            <div class="alert alert-danger mt-2 mb-0 pt-1 pb-1" role="alert">
+                                <!-- as mensagens de erro serão exibidas -->
+                                {% for error in form.titulo.errors %}
+                                <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+                            <!-- # <input class="form-control form-2" type="text" name="titulo" maxlength="100" required="" id="id_titulo" placeholder="Título"> -->
+
+                        </div>
+
+                        <div class="col-12 form-group pb-3">
+                            <!--data-->
+                            {{ form.data }}
+
+                            <!-- caso algum valor inválido seja digitado no formulário-->
+                            {% if form.data.errors %}
+                            <div class="alert alert-danger mt-2 mb-0 pt-1 pb-1" role="alert">
+                                <!-- as mensagens de erro serão exibidas -->
+                                {% for error in form.data.errors %}
+                                <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+                            <!-- # <input class="form-control form-2" type="text" name="data" required="" id="id_data" placeholder="Data (dd/mm/yyyy)"> -->
+                        </div>
+
+                        <div class="col-12 form-group pb-3">
+                            <!--imagem-->
+                            {{ form.imagem }}
+
+                            <!-- caso algum valor inválido seja digitado no formulário-->
+                            {% if form.imagem.errors %}
+                            <div class="alert alert-danger mt-2 mb-0 pt-1 pb-1" role="alert">
+                                <!-- as mensagens de erro serão exibidas -->
+                                {% for error in form.imagem.errors %}
+                                <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+                            <!-- # <input class="form-control form-2" type="text" name="imagem" maxlength="50" required="" id="id_imagem" placeholder="Imagem (nome.extensão)"> -->
+                        </div>
+
+                        <div class="col-12 form-group pb-3">
+                            <!--descricao breve-->
+                            {{ form.desc_mini }}
+
+                            <!-- caso algum valor inválido seja digitado no formulário-->
+                            {% if form.desc_mini.errors %}
+                            <div class="alert alert-danger mt-2 mb-0 pt-1 pb-1" role="alert">
+                                <!-- as mensagens de erro serão exibidas -->
+                                {% for error in form.desc_mini.errors %}
+                                <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+                            <!-- <textarea class="form-control form-2"  type="text" name="desc_mini" maxlength="300" required="" id="id_desc_mini" placeholder="Descrição breve" rows="8"></textarea> -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="row">
+
+                        <div class="col-12 form-group pb-3">
+                            <!--desricao completa-->
+                            {{ form.desc_full }}
+
+                            <!-- caso algum valor inválido seja digitado no formulário-->
+                            {% if form.desc_full.errors %}
+                            <div class="alert alert-danger mt-2 mb-0 pt-1 pb-1" role="alert">
+                                <!-- as mensagens de erro serão exibidas -->
+                                {% for error in form.desc_full.errors %}
+                                <small>{{ error }}</small>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="offset-8 col-4">
+                    <!-- esse botão envia um request do tipo 'POST' para a view -->
+                    <button id="botao" type="submit" class="btn btn-ctt">
+                        {% if 'noticia_id' in request.session %}
+                            <h6 style="font-size: 0.65em;" class="my-auto p-0 d-inline"><b> ALTERAR</b></h6>
+                        {% else %}
+                            <h6 style="font-size: 0.65em;" class="my-auto p-0 d-inline"><b> ENVIAR</b></h6>
+                        {% endif %}
+                    </button>
+
+                    <!-- como o request é do tipo 'POST' e modifica valores de um bd, o django pede que adicione o token por segurança-->
+                    {% csrf_token %}
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+
+
+
+
+</div>
+
+{% endblock %}

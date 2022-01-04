@@ -1,0 +1,82 @@
+{% extends "base_template.html" %}
+{% load static %}
+
+{% block title %}{{ receita.titulo }}{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block scripts %}<script src="{% static 'js/button-like.js' %}"></script>{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+
+    <div class="row mb-2">
+        <img class="w-100" src="{% static 'images/' %}{{ receita.imagem }}" alt="{{ receita.titulo }}">
+    </div>
+
+    <!--titulo da receita-->
+    <div class="row mb-2">
+        <div class="d-flex">
+            <strong style="font-size: 1.6em">{{ receita.titulo}}</strong>
+
+            <div class="ps-2 pt-2" id="r{{ receita.id }}">
+                <span id="like-r{{ receita.id }}" class="badge bg-primary" data-like="{{ receita.likes }}">{{ receita.likes }}</span><a class="ps-1 pe-1" id="like-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="like_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="like-icon-r{{ receita.id }}" class="far fa-thumbs-up"></i></a><span id="dislike-r{{ receita.id }}" class="badge bg-primary"  data-dislike="{{ receita.deslikes }}">{{ receita.deslikes }}</span><a class="ps-1 pe-1" id="dislike-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="dislike_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="dislike-icon-r{{ receita.id }}" class="far fa-thumbs-down"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!--caixa modo de preparo-->
+    <div class="row d-flex justify-content-end">
+        <div class="d-flex col-6 col-lg-3 mb-3 mx-end">
+
+            <div class="card p-3" style="width: 18rem;">
+                <div class="card-body">
+                    <p class="card-text m-0" style="font-size: 0.9em; color: rgb(65, 65, 65);">
+                        <strong>Tempo:</strong></p>
+                    <p class="card-text" style="font-size: 0.9em; color: #888888">{{ receita.tempo }}</p>
+
+                    <p class="card-text m-0" style="font-size: 0.9em; color: rgb(65, 65, 65);">
+                        <strong>Rendimento:</strong></p>
+                    <p class="card-text" style="font-size: 0.9em; color: #888888">{{ receita.rendimento }}</p>
+
+                    <p class="card-text m-0" style="font-size: 0.9em; color: rgb(65, 65, 65);">
+                        <strong>Dificuldade:</strong></p>
+                    <p class="card-text" style="font-size: 0.9em; color: #888888">{{ receita.dificuldade }}</p>
+
+                    <p class="card-text m-0" style="font-size: 0.9em; color: rgb(65, 65, 65);"><strong>Modo de
+                            Servir:</strong></p>
+                    <p class="card-text" style="font-size: 0.9em; color: #888888">{{ receita.modo_servir }}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--ingredientes-->
+    <div class="row mb-4">
+        <strong class="mb-2" style="font-size: 1.3em; color: rgb(65, 65, 65);">INGREDIENTES:</strong>
+
+        <ul class="ms-3 list-group">
+
+            {% for ingrediente in receita.ingredientes_lista %}
+            <li style="font-size: 0.9em; color: #888888" class="ms-3 card-item">{{ ingrediente }}</li>
+            {% endfor %}
+
+        </ul>
+    </div>
+
+    <!--preparo-->
+    <div class="row mb-4">
+        <strong class="mb-2" style="font-size: 1.3em; color: rgb(65, 65, 65);">MODO DE PREPARO:</strong>
+
+        <p class="card-text" style="font-size: 0.9em; color: #888888;">
+            {{ receita.modo_preparo | safe }}
+        </p>
+    </div>
+
+
+</div>
+    
+{% endblock %}

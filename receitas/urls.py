@@ -9,5 +9,8 @@ urlpatterns = [
     path('receitas/', views.receitas, name="index"), 
     # o atributo name de um path serve para dizer qual é o nome a ser colocado caso queira [
     # criar um href="{% url 'app_nome:nome' %}"
+    
+    path('receitas/<int:id>/<slug:slug>/', views.receita, name="receita"),
+    # url para mostrar a receita na página de receita 
 
 ]

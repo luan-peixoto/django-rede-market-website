@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from receitas.models import Receita
 
 def receitas(request):
@@ -15,3 +15,9 @@ def receitas(request):
 
     # o dicionario a ser renderizado é chamado 'context' basicamente ele contem um conjunto de 
     # objetos que são passados para a página a ser renderizada
+
+def receita(request, id, slug):
+    receita = get_object_or_404(Receita, pk=id)
+    # recupera a receita a ser exibida
+
+    return render(request, 'paginas/receita.html', {'receita' : receita})

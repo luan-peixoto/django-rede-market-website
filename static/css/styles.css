@@ -396,6 +396,38 @@ IMPORTANTE:
     background-color: #c53f48;
 }
 
+.btn-remove {
+    padding-top: 2px !important;
+    padding-right: 30px !important;
+    padding-left: 30px !important;
+    padding-bottom: 6px !important;
+    border-radius: 0;
+    color: #fff;
+    background-color: #ff2433;
+    box-shadow: none !important;
+}
+
+.btn-remove:hover {
+    color: #fff;
+    background-color: #c70f1c;
+}
+
+.btn-edit {
+    padding-top: 2px !important;
+    padding-right: 30px !important;
+    padding-left: 30px !important;
+    padding-bottom: 6px !important;
+    border-radius: 0;
+    color: #fff;
+    background-color: #6de47c;
+    box-shadow: none !important;
+}
+
+.btn-edit:hover {
+    color: #fff;
+    background-color: #4cbb5b;
+}
+
 /* table escura */
 
 .table-market {

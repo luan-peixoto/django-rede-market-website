@@ -41,13 +41,13 @@
                     {% if receita.categoria_id == 1 %}
                         <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-sm-none">
                             <div class="card receita-page-dif card-hover navbar-item-hover">
-                                <a href="/pages/receitas/receita-1.html"><img id="card-img" class="card-img-top" src="{% static 'images/' %}{{ receita.imagem }}"
+                                <a href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}"><img id="card-img" class="card-img-top" src="{% static 'images/' %}{{ receita.imagem }}"
                                         alt="Card image cap"></a>
                                 <div class="card-body">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col">
-                                                <a href="/pages/receitas/receita-1.html" style="color: rgb(65, 65, 65);"
+                                                <a href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}" style="color: rgb(65, 65, 65);"
                                                     class="nav-link navbar-item-hover p-0 pt-2 pb-2" aria-current="page" href="/index.html">
                                                     <strong style="font-size: 1.3em">{{ receita.titulo }}</strong>
                                                 </a>
@@ -62,7 +62,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-4 col-lg-2 col-xl-4 my-auto">
-                                                <a id="btn-card" type="button" href="/pages/receitas/receita-1.html" class="btn-receita">
+                                                <a id="btn-card" type="button" href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}" class="btn-receita">
 
                                                     <i id="btn-inside" class="fas fa-angle-right"></i>
                                                 </a>

@@ -46,7 +46,6 @@ const popover = new bootstrap.Popover(document.querySelector('.ativar-popover-pe
 })
 
 
-
 // FUNÇÃO PARA COLOCAR LIBERAR BOTÃO DE VOLTAR AO TOPO:
 
 $(window).scroll(function () {

@@ -21,12 +21,13 @@
                 {% for noticia in noticias %}
                 <div class="col-sm-6 d-flex align-items-stretch mb-3 mb-sm-none">
                     <div style="box-shadow: none !important;" class="card card-reto card-limpo">
-                        <a href="noticias/noticia-1.html" aria-current="page"><img class="card-img-top w-100" src="{% static 'images/' %}{{ noticia.imagem }}" alt="{{ noticia.slug }}"></a>
+                        <a href="{% url 'noticias:noticia' id=noticia.id slug=noticia.slug %}" aria-current="page"><img class="card-img-top w-100" src="{% static 'images/' %}{{ noticia.imagem }}" alt="{{ noticia.slug }}"></a>
+                        <!-- pode ser também /pages/noticias/noticia/{{ noticia.id }}/-->
                         <div class="card-body p-0">
                             <div class="caption d-flex">
-                                <a href="noticias/noticia-1.html" style="color: #e74d57" class="nav-link navbar-item-hover"
+                                <a href="{% url 'noticias:noticia' id=noticia.id slug=noticia.slug %}" style="color: #e74d57" class="nav-link navbar-item-hover"
                                     aria-current="page">
-                                    <b style="font-size: 0.7em;">{{ noticia.data }}</b>
+                                    <b style="font-size: 0.7em;">{{ noticia.data|date:'d/m/Y' }}</b>
                                 </a>
 
                                 <!--botão de like-->
@@ -36,7 +37,7 @@
                             </div>
 
                             <div class="caption">
-                                <a href="noticias/noticia-1.html" style="color: rgb(65, 65, 65);" class="nav-link navbar-item-hover"
+                                <a href="{% url 'noticias:noticia' id=noticia.id slug=noticia.slug %}" style="color: rgb(65, 65, 65);" class="nav-link navbar-item-hover"
                                     aria-current="page">
                                     <h4><b>{{ noticia.titulo }}</b></h4>
                                 </a>
@@ -51,7 +52,7 @@
                         </div>
                         <div class="card-footer p-0 footer-limpo">
                             <div class="caption">
-                                <a href="noticias/noticia-1.html" style="color: rgb(65, 65, 65);" class="nav-link navbar-item-hover"
+                                <a href="{% url 'noticias:noticia' id=noticia.id slug=noticia.slug %}" style="color: rgb(65, 65, 65);" class="nav-link navbar-item-hover"
                                     aria-current="page">
                                     <p class="display-1" style="font-size: 0.80em;">VEJA MAIS</p>
                                 </a>

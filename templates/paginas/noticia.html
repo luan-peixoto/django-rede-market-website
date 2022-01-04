@@ -1,0 +1,46 @@
+{% extends "base_template.html" %}
+{% load static %}
+
+{% block title %}{{ noticia.titulo }}{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block scripts %}<script src="{% static 'js/button-like.js' %}"></script>{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+
+    <!--img noticia-->
+    <div class="row mb-2 d-flex justify-content-center">
+        <img class="w-90" src="{% static 'images/' %}{{ noticia.imagem }}" alt="{{ noticia.titulo }}">
+    </div>
+
+    <!--titulo da noticia-->
+    <div class="row mb-4">
+            <strong style="font-size: 1.6em">{{ noticia.titulo }}</strong>
+            <div class="d-flex">
+                <b class="pt-1 ps-2 pe-2" style="font-size: 0.8em;color: #e74d57">{{ noticia.data|date:'d/m/Y' }}</b>
+            
+                <!--botão de like-->
+            
+                <div id="n{{ noticia.id }}" class="">
+                    <span id="like-n{{ noticia.id }}" class="badge bg-primary" data-like="{{ noticia.likes }}">{{ noticia.likes }}</span><a class="ps-1 pe-1" id="like-btn-n{{ noticia.id }}" data-clicked="false" type="button" onclick="like_click('n{{ noticia.id }}')" style="color: #0d6efd"><i id="like-icon-n{{ noticia.id }}" class="far fa-thumbs-up"></i></a><span id="dislike-n{{ noticia.id }}" class="badge bg-primary"  data-dislike="{{ noticia.deslikes }}">{{ noticia.deslikes }}</span><a class="ps-1 pe-1" id="dislike-btn-n{{ noticia.id }}" data-clicked="false" type="button" onclick="dislike_click('n{{ noticia.id }}')" style="color: #0d6efd"><i id="dislike-icon-n{{ noticia.id }}" class="far fa-thumbs-down"></i></a>
+                </div>
+            </div>
+    </div>
+
+        <!--noticia-->
+        <div class="row mb-4">
+            <p class="card-text" style="font-size: 1em; color: #888888;">
+                {{ noticia.desc_full | safe }}
+                <!-- safe faz com que o código html dentro da string seja carregado -->
+            </p>
+        </div>
+
+
+
+</div>
+    
+{% endblock %}

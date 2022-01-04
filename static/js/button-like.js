@@ -33,7 +33,6 @@ function like_click(id_noticia) {
 }
 
 function dislike_click(id_noticia) {
-
     let click = $(`#dislike-btn-${id_noticia}`).data("clicked");
     if (!click) {
         let click_like = $(`#like-btn-${id_noticia}`).data("clicked");

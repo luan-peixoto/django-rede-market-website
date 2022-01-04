@@ -63,7 +63,11 @@
                     {% for noticia in noticias %}
                     <tr>
                         <td>{{ noticia.id }}</td>
-                        <td>{{ noticia.titulo }}</td>
+                        <td>
+                            <a style="text-decoration: none;" href="{% url 'noticias:detalhes-noticia' id=noticia.id slug=noticia.slug %}">
+                                {{ noticia.titulo }}
+                            </a>
+                        </td>
                         <td>{{ noticia.data }}</td>
                         <td>{{ noticia.desc_mini|slice:":100" }} ...</td>
                         <td>{{ noticia.likes }}</td>

@@ -1,15 +1,15 @@
 from django.db import models
 
 class Noticia(models.Model):
-    titulo = models.CharField(max_length=100, db_index=True, unique=True, default='titulo')
+    titulo = models.CharField(max_length=100, db_index=True, unique=True)
     slug = models.SlugField(max_length=100)
 
-    imagem = models.CharField(max_length=50, blank=True)
+    imagem = models.CharField(max_length=50)
 
-    data = models.CharField(max_length=50, default="10/10/2020")
+    data = models.DateField()
 
-    desc_mini = models.CharField(max_length=300, blank=True)
-    desc_full = models.CharField(max_length=5000, blank=True)
+    desc_mini = models.CharField(max_length=300)
+    desc_full = models.CharField(max_length=5000)
     
 
 

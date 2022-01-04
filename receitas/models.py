@@ -46,3 +46,6 @@ class Receita(models.Model):
     # print(cat), o método acima faz com que ao invés de ser retornado algo como 
     # <objeto - nome: 'nome', slug: 'slug>, seja retornado apenas objeto.nome, que no caso
     # é o atributo nome do objeto em forma de string
+
+    def ingredientes_lista(self):
+        return self.ingredientes.split('#')
