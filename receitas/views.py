@@ -3,7 +3,7 @@ from receitas.models import Receita
 
 def receitas(request):
     
-    lista_receitas = Receita.objects.filter(categoria_id=1).order_by('id')
+    lista_receitas = Receita.objects.order_by('id')
     return render(request, './paginas/receitas.html', {'receitas' : lista_receitas})
     # "./receitas.html" é o caminho do arquivo html a ser renderizado
     # por padrão o django procura os arquivos html em todas as pasta template que precisa

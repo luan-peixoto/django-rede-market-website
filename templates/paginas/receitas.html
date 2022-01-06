@@ -7,6 +7,7 @@
 
 {% block scripts %}
     <script src="{% static 'js/button-like.js' %}"></script>
+    <script src="{% static 'js/toggle-receitas.js' %}"></script>
 {% endblock %}
 
 {% block body %}
@@ -24,13 +25,13 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb d-flex justify-content-center">
                         <li class="breadcrumb-item" aria-current="page"><a class="navbar-item-hover"
-                                style="color:rgb(65, 65, 65);" href="#">Todos</a></li>
+                                style="color:rgb(65, 65, 65);" onclick="mostrarCard('todos')" >Todos</a></li>
                         <li class="breadcrumb-item"><a class="navbar-item-hover" style="color:rgb(65, 65, 65);"
-                                href="#">Família</a></li>
+                                onclick="mostrarCard('familia')" >Família</a></li>
                         <li class="breadcrumb-item"><a class="navbar-item-hover" style="color:rgb(65, 65, 65);"
-                                href="#">Gourmet</a></li>
+                                onclick="mostrarCard('gourmet')" >Gourmet</a></li>
                         <li class="breadcrumb-item"><a class="navbar-item-hover" style="color:rgb(65, 65, 65);"
-                                href="#">Prático</a></li>
+                                onclick="mostrarCard('pratico')" >Prático</a></li>
                     </ol>
                 </nav>
             </div>
@@ -39,7 +40,7 @@
             <div class="row">
                 {% for receita in receitas %}
                     {% if receita.categoria_id == 1 %}
-                        <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-sm-none">
+                        <div style="display: block !important;" class="todos col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-sm-none">
                             <div class="card receita-page-dif card-hover navbar-item-hover">
                                 <a href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}"><img id="card-img" class="card-img-top" src="{% static 'images/' %}{{ receita.imagem }}"
                                         alt="Card image cap"></a>
@@ -76,7 +77,129 @@
                         </div>
                     {% endif %}
                 {% endfor %}
+
+                {% for receita in receitas %}
+                    {% if receita.categoria_id == 2 %}
+                        <div style="display: none !important;" class="familia col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-sm-none">
+                            <div class="card receita-page-dif card-hover navbar-item-hover">
+                                <a href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}"><img id="card-img" class="card-img-top" src="{% static 'images/' %}{{ receita.imagem }}"
+                                        alt="Card image cap"></a>
+                                <div class="card-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}" style="color: rgb(65, 65, 65);"
+                                                    class="nav-link navbar-item-hover p-0 pt-2 pb-2" aria-current="page" href="/index.html">
+                                                    <strong style="font-size: 1.3em">{{ receita.titulo }}</strong>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-8 col-lg-10 col-xl-8 my-auto">
+                                                <!--botão de like-->
+                                                <div id="r{{ receita.id }}">
+                                                    <span id="like-r{{ receita.id }}" class="badge bg-primary" data-like="{{ receita.likes }}">{{ receita.likes }}</span><a class="ps-1 pe-1" id="like-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="like_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="like-icon-r{{ receita.id }}" class="far fa-thumbs-up"></i></a><span id="dislike-r{{ receita.id }}" class="badge bg-primary"  data-dislike="{{ receita.deslikes }}">{{ receita.deslikes }}</span><a class="ps-1 pe-1" id="dislike-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="dislike_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="dislike-icon-r{{ receita.id }}" class="far fa-thumbs-down"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 col-lg-2 col-xl-4 my-auto">
+                                                <a id="btn-card" type="button" href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}" class="btn-receita">
+
+                                                    <i id="btn-inside" class="fas fa-angle-right"></i>
+                                                </a>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                
+                {% for receita in receitas %}
+                    {% if receita.categoria_id == 3 %}
+                        <div style="display: none !important;" class="gourmet col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-sm-none">
+                            <div class="card receita-page-dif card-hover navbar-item-hover">
+                                <a href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}"><img id="card-img" class="card-img-top" src="{% static 'images/' %}{{ receita.imagem }}"
+                                        alt="Card image cap"></a>
+                                <div class="card-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}" style="color: rgb(65, 65, 65);"
+                                                    class="nav-link navbar-item-hover p-0 pt-2 pb-2" aria-current="page" href="/index.html">
+                                                    <strong style="font-size: 1.3em">{{ receita.titulo }}</strong>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-8 col-lg-10 col-xl-8 my-auto">
+                                                <!--botão de like-->
+                                                <div id="r{{ receita.id }}">
+                                                    <span id="like-r{{ receita.id }}" class="badge bg-primary" data-like="{{ receita.likes }}">{{ receita.likes }}</span><a class="ps-1 pe-1" id="like-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="like_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="like-icon-r{{ receita.id }}" class="far fa-thumbs-up"></i></a><span id="dislike-r{{ receita.id }}" class="badge bg-primary"  data-dislike="{{ receita.deslikes }}">{{ receita.deslikes }}</span><a class="ps-1 pe-1" id="dislike-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="dislike_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="dislike-icon-r{{ receita.id }}" class="far fa-thumbs-down"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 col-lg-2 col-xl-4 my-auto">
+                                                <a id="btn-card" type="button" href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}" class="btn-receita">
+
+                                                    <i id="btn-inside" class="fas fa-angle-right"></i>
+                                                </a>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                {% for receita in receitas %}
+                    {% if receita.categoria_id == 4 %}
+                        <div style="display: none !important;" class="pratico col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-sm-none">
+                            <div class="card receita-page-dif card-hover navbar-item-hover">
+                                <a href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}"><img id="card-img" class="card-img-top" src="{% static 'images/' %}{{ receita.imagem }}"
+                                        alt="Card image cap"></a>
+                                <div class="card-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}" style="color: rgb(65, 65, 65);"
+                                                    class="nav-link navbar-item-hover p-0 pt-2 pb-2" aria-current="page" href="/index.html">
+                                                    <strong style="font-size: 1.3em">{{ receita.titulo }}</strong>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-8 col-lg-10 col-xl-8 my-auto">
+                                                <!--botão de like-->
+                                                <div id="r{{ receita.id }}">
+                                                    <span id="like-r{{ receita.id }}" class="badge bg-primary" data-like="{{ receita.likes }}">{{ receita.likes }}</span><a class="ps-1 pe-1" id="like-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="like_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="like-icon-r{{ receita.id }}" class="far fa-thumbs-up"></i></a><span id="dislike-r{{ receita.id }}" class="badge bg-primary"  data-dislike="{{ receita.deslikes }}">{{ receita.deslikes }}</span><a class="ps-1 pe-1" id="dislike-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="dislike_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="dislike-icon-r{{ receita.id }}" class="far fa-thumbs-down"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 col-lg-2 col-xl-4 my-auto">
+                                                <a id="btn-card" type="button" href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}" class="btn-receita">
+
+                                                    <i id="btn-inside" class="fas fa-angle-right"></i>
+                                                </a>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
             </div>
+            
 
 
 
