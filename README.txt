@@ -1,1 +1,1 @@
-﻿Acesse o site em: https://django-rede-market.herokuapp.com/
+﻿Acesse o site funcional com backend em: https://django-rede-market.herokuapp.com/
