@@ -13,4 +13,9 @@ urlpatterns = [
     path('receitas/<int:id>/<slug:slug>/', views.receita, name="receita"),
     # url para mostrar a receita na página de receita 
 
+    path('alterar_like_receita/', views.alterar_like_receita, name="alterar-like-receita"),  
+
+    
+    path('exibir_receitas_por_categoria/', views.exibir_receitas_por_categoria, name="exibir-receitas-por-categoria"),  
+
 ]

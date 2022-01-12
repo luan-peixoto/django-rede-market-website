@@ -5,11 +5,195 @@
 
 {% block stylesheets %}{% endblock %}
 
-{% block scripts %}<script src="{% static 'js/button-like.js' %}"></script>{% endblock %}
+{% block scripts %}
+    <script>
+        $(document).ready(function(){
+
+            // cria uma requisição ajax baseado no #id do botão de like
+            $("#lista_receitas").on("click", ".btn-like-click", function(event) {
+                event.preventDefault();
+
+                let total_like = 0;
+                let total_dislike = 0;
+
+                let btn_like = $(this);
+                console.log(btn_like.html())
+                // recupera o botão de like clicado
+
+                let icon_like = btn_like.children('i');
+                // recupera o icone do botão de like clicado
+
+                let form_like = btn_like.parent();
+                // recupera o formulário do botão de like clicado
+
+                let span_like = form_like.prev();
+                // recupera o span que mostra o número de like do botão de like clicado
+
+                let form_dislike = form_like.next().next();
+                // recupera o formulário do botão de dislike referente ao botão de like clicado
+
+                let span_dislike = form_dislike.prev();
+                // recupera o span que mostra o número de dislike referente ao botão de like clicado
+
+                let btn_dislike = form_dislike.children('a');
+                // recupera o botão de dislike referente ao botão de like clicado
+                
+                
+                let icon_dislike = btn_dislike.children('i');
+                // recupera o icone do botão de dislike referente ao botão de like clicado
+
+                let form_data = form_like.serializeArray();
+                // recupera os dados do formulário do botão de like clicado, no caso cada os inputs
+
+                let click = btn_like.data("clicked");
+                // checa se a data do botão de like é 'clicked'
+
+                if (!click) {
+                    // se não for
+                    let click_dislike = btn_dislike.data("clicked");
+                    // checa se a data do botão de dislike é 'clicked'
+                    if (click_dislike) {
+                        // se for
+                        let dislikes_qtd = parseInt(span_dislike.text()) - 1
+                        span_dislike.text(dislikes_qtd);
+                        btn_dislike.data("clicked", false);
+                        icon_dislike.removeClass("fas");
+                        // diminui 1 na quantidade de dislikes e 'desclica' o botão
+                        total_dislike = -1;
+                    }
+
+                    let likes_qtd = parseInt(span_like.text()) + 1
+                    span_like.text(likes_qtd);
+                    btn_like.data("clicked", true);
+                    icon_like.addClass("fas");
+                    // aumenta 1 na quantidade de likes e 'clica' o botão
+                    total_like = 1;
+
+                }
+                else {
+                    // se o botão de like estiver clicado
+                    let likes_qtd = parseInt(span_like.text()) - 1
+                    span_like.text(likes_qtd);
+                    btn_like.data("clicked", false);
+                    icon_like.removeClass("fas");
+                    // diminui 1 na quantidade de likes e 'desclica' o botão
+                    total_like = -1
+
+                }
+                // envia uma requisição post para /alterar_like_receita/
+                $.ajax({
+                    type: 'POST',
+                    url: '/pages/alterar_like_receita/',
+                    data: {
+                        id: form_data[1]['value'],
+                        // pega o input[1] que é o id, e recupera o valor #id
+                        like: String(total_like),
+                        dislike: String(total_dislike),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                        dataType: "json"
+                    },
+                    success: function(response) {
+                    }
+                });
+
+                
+            });
+
+
+            // cria uma requisição ajax baseado no #id do botão de dislike
+            $("#lista_receitas").on("click", ".btn-dislike-click", function(event) {
+                event.preventDefault();
+                
+                let total_like = 0;
+                let total_dislike = 0;
+
+                let btn_dislike = $(this)
+                // recupera o botão de dislike clicado
+
+                let icon_dislike = btn_dislike.children('i');
+                // recupera o icone do botão de dislike clicado
+
+                let form_dislike = btn_dislike.parent();
+                // recupera o formulário do botão de dislike clicado
+
+                let span_dislike = form_dislike.prev();
+                // recupera o span que mostra o número de dislike do botão de dislike clicado
+
+                let form_like = form_dislike.prev().prev();
+                // recupera o formulário do botão de like referente ao botão de dislike clicado
+
+                let span_like = form_like.prev();
+                // recupera o span que mostra o número de like referente ao botão de dislike clicado
+
+                let btn_like = form_like.children('a');
+                // recupera o botão de like referente ao botão de dislike clicado
+                
+                let icon_like = btn_like.children('i');
+                // recupera o icone do botão de like referente ao botão de dislike clicado
+
+                let form_data = form_dislike.serializeArray();
+                // recupera os dados do formulário do botão de dislike clicado, no caso cada os inputs
+
+                let click = btn_dislike.data("clicked");
+
+                if (!click) {
+                    let click_like = btn_like.data("clicked");
+                    if (click_like) {
+                        let likes_qtd = parseInt(span_like.text()) - 1
+                        span_like.text(likes_qtd);
+                        btn_like.data("clicked", false);
+                        icon_like.removeClass("fas");
+
+                        total_like = -1
+                    }
+
+                    let dislikes_qtd = parseInt(span_dislike.text()) + 1
+                    span_dislike.text(dislikes_qtd);
+                    btn_dislike.data("clicked", true);
+                    icon_dislike.addClass("fas");
+
+                    total_dislike = 1
+
+                }
+                else {
+                    let dislikes_qtd = parseInt(span_dislike.text()) - 1
+                    span_dislike.text(dislikes_qtd);
+                    btn_dislike.data("clicked", false);
+                    icon_dislike.removeClass("fas");
+
+                    total_dislike = -1
+                }
+
+                // envia uma requisição post para /alterar_like_receita/
+                $.ajax({
+                    type: 'POST',
+                    url: '/pages/alterar_like_receita/',
+                    data: {
+                        id: form_data[1]['value'],
+                        // pega o input[1] que é o id, e recupera o valor #id
+                        like: String(total_like),
+                        dislike: String(total_dislike),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                        dataType: "json"
+                    },
+                    success: function(response) {
+                    }
+                });
+
+                
+            });
+
+
+
+
+            
+        });
+    </script>
+{% endblock %}
 
 {% block body %}
 
-<div class="container">
+<div id="lista_receitas" class="container">
 
 
     <div class="row mb-2">
@@ -21,8 +205,27 @@
         <div class="d-flex">
             <strong style="font-size: 1.6em">{{ receita.titulo}}</strong>
 
-            <div class="ps-2 pt-2" id="r{{ receita.id }}">
-                <span id="like-r{{ receita.id }}" class="badge bg-primary" data-like="{{ receita.likes }}">{{ receita.likes }}</span><a class="ps-1 pe-1" id="like-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="like_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="like-icon-r{{ receita.id }}" class="far fa-thumbs-up"></i></a><span id="dislike-r{{ receita.id }}" class="badge bg-primary"  data-dislike="{{ receita.deslikes }}">{{ receita.deslikes }}</span><a class="ps-1 pe-1" id="dislike-btn-r{{ receita.id }}" data-clicked="false" type="button" onclick="dislike_click('r{{ receita.id }}')" style="color: #0d6efd"><i id="dislike-icon-r{{ receita.id }}" class="far fa-thumbs-down"></i></a>
+            <!--botão de like-->
+            <div id="r{{ receita.id }}" class="ps-2 pt-2">
+                <span class="badge bg-primary">{{ receita.likes }}</span>
+                <form class="d-inline-block" action="" method="POST">
+                    {% csrf_token %}
+                    {{ receita_form.receita_id }}
+                    <!-- <input type="hidden" name="receita_id" value="{id_da_receita}" id="id_receita_id"> -->
+                    <a class="ps-1 pe-1 btn-like-click" data-clicked="false" type="button" style="color: #0d6efd">
+                        <i class="far fa-thumbs-up"></i>
+                    </a>
+                </form>
+                <span class="badge bg-primary">{{ receita.deslikes }}</span>
+                <form class="d-inline-block" action="" method="POST">
+                    {% csrf_token %}
+                    {{ receita_form.receita_id }}
+                    <!-- <input type="hidden" name="receita_id" value="{id_da_receita}" id="id_receita_id"> -->
+                    <a class="ps-1 pe-1 btn-dislike-click" data-clicked="false" type="button" style="color: #0d6efd">
+                        <i class="far fa-thumbs-down"></i>
+                    </a>
+                </form>
+
             </div>
         </div>
     </div>

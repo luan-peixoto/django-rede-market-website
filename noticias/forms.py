@@ -100,3 +100,8 @@ class CriarEditarNoticiaForm(forms.ModelForm):
     )
 
     # <textarea class="form-control form-2"  type="text" name="desc_full" maxlength="5000" required="" id="id_desc_full" placeholder="Descrição completa" rows="18"></textarea>
+
+
+class NoticiaIdForm(forms.Form):
+
+    noticia_id = forms.CharField(widget=forms.HiddenInput())

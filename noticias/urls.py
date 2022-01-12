@@ -22,8 +22,9 @@ urlpatterns = [
 
     path('editar_noticia/<int:id>/<slug:slug>/', views.editar_noticia, name="editar-noticia"),
 
-    
     path('remover_noticia/', views.remover_noticia, name="remover-noticia"),  
+    
+    path('alterar_like_noticia/', views.alterar_like_noticia, name="alterar-like-noticia"),  
 
 
 ]

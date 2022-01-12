@@ -5,7 +5,192 @@
 
 {% block stylesheets %}{% endblock %}
 
-{% block scripts %}<script src="{% static 'js/button-like.js' %}"></script>{% endblock %}
+{% block scripts %}
+    <script>
+        $(document).ready(function(){
+
+            // cria uma requisição ajax baseado no #id do botão de like
+            $("#lista_noticias").on("click", ".btn-like-click", function(event) {
+                event.preventDefault();
+
+                let total_like = 0;
+                let total_dislike = 0;
+
+                let btn_like = $(this);
+                // recupera o botão de like clicado
+
+                let icon_like = btn_like.children('i');
+                // recupera o icone do botão de like clicado
+                console.log(icon_like.html())
+
+                let form_like = btn_like.parent();
+                // recupera o formulário do botão de like clicado
+
+                let span_like = form_like.prev();
+                // recupera o span que mostra o número de like do botão de like clicado
+
+                let form_dislike = form_like.next().next();
+                // recupera o formulário do botão de dislike referente ao botão de like clicado
+
+                let span_dislike = form_dislike.prev();
+                // recupera o span que mostra o número de dislike referente ao botão de like clicado
+
+                let btn_dislike = form_dislike.children('a');
+                // recupera o botão de dislike referente ao botão de like clicado
+                
+                
+                let icon_dislike = btn_dislike.children('i');
+                // recupera o icone do botão de dislike referente ao botão de like clicado
+
+                let form_data = form_like.serializeArray();
+                // recupera os dados do formulário do botão de like clicado, no caso cada os inputs
+
+                let click = btn_like.data("clicked");
+                // checa se a data do botão de like é 'clicked'
+
+                if (!click) {
+                    // se não for
+                    let click_dislike = btn_dislike.data("clicked");
+                    // checa se a data do botão de dislike é 'clicked'
+                    if (click_dislike) {
+                        // se for
+                        let dislikes_qtd = parseInt(span_dislike.text()) - 1
+                        span_dislike.text(dislikes_qtd);
+                        btn_dislike.data("clicked", false);
+                        icon_dislike.removeClass("fas");
+                        // diminui 1 na quantidade de dislikes e 'desclica' o botão
+                        total_dislike = -1;
+                    }
+
+                    let likes_qtd = parseInt(span_like.text()) + 1
+                    span_like.text(likes_qtd);
+                    btn_like.data("clicked", true);
+                    icon_like.addClass("fas");
+                    // aumenta 1 na quantidade de likes e 'clica' o botão
+                    total_like = 1;
+
+                }
+                else {
+                    // se o botão de like estiver clicado
+                    let likes_qtd = parseInt(span_like.text()) - 1
+                    span_like.text(likes_qtd);
+                    btn_like.data("clicked", false);
+                    icon_like.removeClass("fas");
+                    // diminui 1 na quantidade de likes e 'desclica' o botão
+                    total_like = -1
+
+                }
+
+                // envia uma requisição post para /alterar_like_noticia/
+                $.ajax({
+                    type: 'POST',
+                    url: '/pages/alterar_like_noticia/',
+                    data: {
+                        id: form_data[1]['value'],
+                        // pega o input[1] que é o id, e recupera o valor #id
+                        like: String(total_like),
+                        dislike: String(total_dislike),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                        dataType: "json"
+                    },
+                    success: function(response) {
+                    }
+                });
+
+                
+            });
+
+
+            // cria uma requisição ajax baseado no #id do botão de dislike
+            $("#lista_noticias").on("click", ".btn-dislike-click", function(event) {
+                event.preventDefault();
+                
+                let total_like = 0;
+                let total_dislike = 0;
+
+                let btn_dislike = $(this)
+                // recupera o botão de dislike clicado
+
+                let icon_dislike = btn_dislike.children('i');
+                // recupera o icone do botão de dislike clicado
+
+                let form_dislike = btn_dislike.parent();
+                // recupera o formulário do botão de dislike clicado
+
+                let span_dislike = form_dislike.prev();
+                // recupera o span que mostra o número de dislike do botão de dislike clicado
+
+                let form_like = form_dislike.prev().prev();
+                // recupera o formulário do botão de like referente ao botão de dislike clicado
+
+                let span_like = form_like.prev();
+                // recupera o span que mostra o número de like referente ao botão de dislike clicado
+
+                let btn_like = form_like.children('a');
+                // recupera o botão de like referente ao botão de dislike clicado
+                
+                let icon_like = btn_like.children('i');
+                // recupera o icone do botão de like referente ao botão de dislike clicado
+
+                let form_data = form_dislike.serializeArray();
+                // recupera os dados do formulário do botão de dislike clicado, no caso cada os inputs
+
+                let click = btn_dislike.data("clicked");
+
+                if (!click) {
+                    let click_like = btn_like.data("clicked");
+                    if (click_like) {
+                        let likes_qtd = parseInt(span_like.text()) - 1
+                        span_like.text(likes_qtd);
+                        btn_like.data("clicked", false);
+                        icon_like.removeClass("fas");
+
+                        total_like = -1
+                    }
+
+                    let dislikes_qtd = parseInt(span_dislike.text()) + 1
+                    span_dislike.text(dislikes_qtd);
+                    btn_dislike.data("clicked", true);
+                    icon_dislike.addClass("fas");
+
+                    total_dislike = 1
+
+                }
+                else {
+                    let dislikes_qtd = parseInt(span_dislike.text()) - 1
+                    span_dislike.text(dislikes_qtd);
+                    btn_dislike.data("clicked", false);
+                    icon_dislike.removeClass("fas");
+
+                    total_dislike = -1
+                }
+
+                // envia uma requisição post para /alterar_like_noticia/
+                $.ajax({
+                    type: 'POST',
+                    url: '/pages/alterar_like_noticia/',
+                    data: {
+                        id: form_data[1]['value'],
+                        // pega o input[1] que é o id, e recupera o valor #id
+                        like: String(total_like),
+                        dislike: String(total_dislike),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                        dataType: "json"
+                    },
+                    success: function(response) {
+                    }
+                });
+
+                
+            });
+
+
+
+
+            
+        });
+    </script>
+{% endblock %}
 
 {% block body %}
     <!--img noticias-->
@@ -17,8 +202,8 @@
     <div class="p-5 d-flex justify-content-center">
         <div class="container">
 
-            <div class="row">
-                {% for noticia in noticias %}
+            <div id="lista_noticias" class="row">
+                {% for noticia, noticia_form in noticias %}
                 <div class="col-sm-6 d-flex align-items-stretch mb-3 mb-sm-none">
                     <div style="box-shadow: none !important;" class="card card-reto card-limpo">
                         <a href="{% url 'noticias:noticia' id=noticia.id slug=noticia.slug %}" aria-current="page"><img class="card-img-top w-100" src="{% static 'images/' %}{{ noticia.imagem }}" alt="{{ noticia.slug }}"></a>
@@ -32,7 +217,26 @@
 
                                 <!--botão de like-->
                                 <div id="n{{ noticia.id }}" class="pt-2">
-                                    <span id="like-n{{ noticia.id }}" class="badge bg-primary" data-like="{{ noticia.likes }}">{{ noticia.likes }}</span><a class="ps-1 pe-1" id="like-btn-n{{ noticia.id }}" data-clicked="false" type="button" onclick="like_click('n{{ noticia.id }}')" style="color: #0d6efd"><i id="like-icon-n{{ noticia.id }}" class="far fa-thumbs-up"></i></a><span id="dislike-n{{ noticia.id }}" class="badge bg-primary"  data-dislike="{{ noticia.deslikes }}">{{ noticia.deslikes }}</span><a class="ps-1 pe-1" id="dislike-btn-n{{ noticia.id }}" data-clicked="false" type="button" onclick="dislike_click('n{{ noticia.id }}')" style="color: #0d6efd"><i id="dislike-icon-n{{ noticia.id }}" class="far fa-thumbs-down"></i></a>
+                                    <span class="badge bg-primary">{{ noticia.likes }}</span>
+                                    <form class="d-inline-block" action="" method="POST">
+                                        {% csrf_token %}
+                                        {{ noticia_form.noticia_id }}
+                                        <!-- <input type="hidden" name="noticia_id" value="{id_da_noticia}" id="id_noticia_id"> -->
+                                        <a class="ps-1 pe-1 btn-like-click" data-clicked="false" type="button" style="color: #0d6efd">
+                                            <i class="far fa-thumbs-up"></i>
+                                        </a>
+                                    </form>
+                                    <span class="badge bg-primary">{{ noticia.deslikes }}</span>
+                                    <form class="d-inline-block" action="" method="POST">
+                                        {% csrf_token %}
+                                        {{ noticia_form.noticia_id }}
+                                        <!-- <input type="hidden" name="noticia_id" value="{id_da_noticia}" id="id_noticia_id"> -->
+                                        <a class="ps-1 pe-1 btn-dislike-click" data-clicked="false" type="button" style="color: #0d6efd">
+                                            <i class="far fa-thumbs-down"></i>
+                                        </a>
+                                    </form>
+
+
                                 </div>
                             </div>
 
@@ -113,3 +317,18 @@
 
     </div>
 {% endblock %}
+
+
+
+<!--
+
+    <form action="" method="POST">
+                        {% csrf_token %}
+                        ${response.form_id_input}
+                        ## <input type="hidden" name="produto_id" value="{id_do_produto}" id="id_produto_id"> 
+                        <button type="button" class="btn btn-sm btn-danger btn-remover">
+                            Remover
+                         </button>
+                      </form>
+
+-->

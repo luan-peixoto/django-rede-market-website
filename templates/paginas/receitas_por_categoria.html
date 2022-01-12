@@ -1,0 +1,63 @@
+{% load static %}
+
+<div class="row">
+    {% for receita, receita_form in receitas %}
+    <div style="display: block !important;" class="todos col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-sm-none">
+        <div class="card receita-page-dif card-hover navbar-item-hover">
+            <a href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}"><img id="card-img"
+                    class="card-img-top" src="{% static 'images/' %}{{ receita.imagem }}" alt="Card image cap"></a>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <a href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}"
+                                style="color: rgb(65, 65, 65);" class="nav-link navbar-item-hover p-0 pt-2 pb-2"
+                                aria-current="page" href="/index.html">
+                                <strong style="font-size: 1.3em">{{ receita.titulo }}</strong>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-8 col-lg-10 col-xl-8 my-auto">
+                            <!--botão de like-->
+                            <div id="r{{ receita.id }}" class="pt-2">
+                                <span class="badge bg-primary">{{ receita.likes }}</span>
+                                <form class="d-inline-block" action="" method="POST">
+                                    {% csrf_token %}
+                                    {{ receita_form.receita_id }}
+                                    <!-- <input type="hidden" name="receita_id" value="{id_da_receita}" id="id_receita_id"> -->
+                                    <a class="ps-1 pe-1 btn-like-click" data-clicked="false" type="button"
+                                        style="color: #0d6efd">
+                                        <i class="far fa-thumbs-up"></i>
+                                    </a>
+                                </form>
+                                <span class="badge bg-primary">{{ receita.deslikes }}</span>
+                                <form class="d-inline-block" action="" method="POST">
+                                    {% csrf_token %}
+                                    {{ receita_form.receita_id }}
+                                    <!-- <input type="hidden" name="receita_id" value="{id_da_receita}" id="id_receita_id"> -->
+                                    <a class="ps-1 pe-1 btn-dislike-click" data-clicked="false" type="button"
+                                        style="color: #0d6efd">
+                                        <i class="far fa-thumbs-down"></i>
+                                    </a>
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="col-4 col-lg-2 col-xl-4 my-auto">
+                            <a id="btn-card" type="button"
+                                href="{% url 'receitas:receita' id=receita.id slug=receita.slug %}" class="btn-receita">
+
+                                <i id="btn-inside" class="fas fa-angle-right"></i>
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

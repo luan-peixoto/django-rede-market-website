@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
-
+from django.http import HttpResponse
 from noticias.models import Noticia
-from noticias.forms import PesquisaNoticiaForm, CriarEditarNoticiaForm
+from noticias.forms import PesquisaNoticiaForm, CriarEditarNoticiaForm, NoticiaIdForm
 from django.template.defaultfilters import slugify
 
 from django.contrib import messages
@@ -22,16 +22,25 @@ def noticias(request):
     # redirecionado para 'pages/noticias/?pagina=x', isso recarrega a view e faz com 
     # que o atributo pagina atual passe a ter o valor de 'x'
 
+    lista_de_forms_id_noticia = []
+    for noticia in lista_noticias:
+        lista_de_forms_id_noticia.append(NoticiaIdForm(initial= {'noticia_id': noticia.id}))
+        # cria um formulário de quantidade e id para cada produto
+    
+    paginator_id = Paginator(lista_de_forms_id_noticia, 4) 
 
     page_obj_noticias = paginator.get_page(pagina_atual)
     # pega uma das páginas do atributo paginator, como a variável página é 'none' ao ser 
     # acessada por algum link noticias ('pages/noticias/'), o objeto retornado será o conjunto
     # de objetos da página 1
 
+    page_obj_id_noticias = paginator_id.get_page(pagina_atual)
+    # pega a pagina dos ids também
+
     # caso seja acessado por algum link 'pages/noticias/?pagina=x', o objeto retornado será
     # o conjunto de objetos da página x
 
-    return render(request, './paginas/noticias.html', {'noticias' : page_obj_noticias})
+    return render(request, './paginas/noticias.html', {'noticias' : zip(page_obj_noticias, page_obj_id_noticias)})
     # "./noticias.html" é o caminho do arquivo html a ser renderizado
     # por padrão o django procura os arquivos html em todas as pasta template que precisa
     # ser criada na raiz de cada app, porém caso seja adicionado 
@@ -46,8 +55,9 @@ def noticias(request):
 def noticia(request, id, slug):
     noticia = get_object_or_404(Noticia, pk=id)
     # recupera a notícia a ser exibida
+    noticia_form = NoticiaIdForm(initial= {'noticia_id': noticia.id})
 
-    return render(request, 'paginas/noticia.html', {'noticia' : noticia})
+    return render(request, 'paginas/noticia.html', {'noticia' : noticia, 'noticia_form' : noticia_form})
 
     
 def listar_noticias(request):
@@ -211,3 +221,18 @@ def remover_noticia(request):
     messages.add_message(request, messages.INFO, 'Notícia Removida com Sucesso!')
     
     return render(request, './paginas/detalhes_noticia.html', {'noticia' : noticia})
+
+
+def alterar_like_noticia(request):
+    if request.POST:
+        # caso seja um request post
+        id = request.POST.get("id")
+        like = int(request.POST.get("like"))
+        dislike = int(request.POST.get("dislike"))
+        noticia = get_object_or_404(Noticia, pk=id)
+        noticia.likes = noticia.likes + like
+        noticia.deslikes = noticia.deslikes + dislike
+        noticia.save()
+        # altera os likes da noticia
+
+    return HttpResponse('')
