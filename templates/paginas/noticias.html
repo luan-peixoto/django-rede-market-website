@@ -267,16 +267,15 @@
 
                 {% endfor %}
             </div>
-
             <!--pagination-->
             <div class="row">
-                {% if noticias.has_other_pages %}
+                {% if pages.has_other_pages %}
                 <nav aria-label="page navigation">
                     <ul class="pagination justify-content-center">
 
-                        {% if noticias.has_previous %}
+                        {% if pages.has_previous %}
                             <li class="page-item">
-                                <a class="page-link" href="?pagina={{ noticias.previous_page_number }}" aria-label="Previous">
+                                <a class="page-link" href="?pagina={{ pages.previous_page_number }}" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
@@ -288,17 +287,17 @@
                             </li>
                             {% endif %}
 
-                            {% for i in noticias.paginator.page_range %}
-                                {% if noticias.number == i %}
+                            {% for i in pages.paginator.page_range %}
+                                {% if pages.number == i %}
                                     <li class="page-item active disabled" aria-current="page"><a class="page-link" href="#">{{ i }}</a></li>
                                 {% else %}
                                     <li class="page-item"><a class="page-link" href="?pagina={{ i }}">{{ i }}</a></li>
                                 {% endif %}
                             {% endfor %}
                             
-                            {% if noticias.has_next %}
+                            {% if pages.has_next %}
                             <li class="page-item">
-                                <a class="page-link" href="?pagina={{ noticias.next_page_number }}" aria-label="Previous">
+                                <a class="page-link" href="?pagina={{ pages.next_page_number }}" aria-label="Previous">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>

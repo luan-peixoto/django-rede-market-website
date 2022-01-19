@@ -40,7 +40,7 @@ def noticias(request):
     # caso seja acessado por algum link 'pages/noticias/?pagina=x', o objeto retornado será
     # o conjunto de objetos da página x
 
-    return render(request, './paginas/noticias.html', {'noticias' : zip(page_obj_noticias, page_obj_id_noticias)})
+    return render(request, './paginas/noticias.html', {'noticias' : list(zip(page_obj_noticias, page_obj_id_noticias)), 'pages' : page_obj_id_noticias})
     # "./noticias.html" é o caminho do arquivo html a ser renderizado
     # por padrão o django procura os arquivos html em todas as pasta template que precisa
     # ser criada na raiz de cada app, porém caso seja adicionado 
